@@ -1,0 +1,2047 @@
+**PROMPT 1 – VIBE CODE
+MÓDULO 1: VENTAS GLOBALES DE LA TIENDITA UVM (ESTOVACUY Y VALERA)**
+
+Contexto del proyecto
+
+Estamos trabajando el Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B), con ocho módulos. El Módulo 1: Ventas Globales busca responder a la pregunta:
+
+“¿Cuál ha sido el comportamiento general de las ventas de La Tiendita UVM en el período analizado?”
+
+El objetivo es describir la dinámica general de ventas de las dos sedes (Estovacuy y Valera) mediante medidas de tendencia central, dispersión y tablas de estructura de ventas, para luego alimentar el Módulo 8 (Síntesis y Dashboard).
+
+Archivos de entrada que debes leer
+
+modulo 1 Fase 2 - Módulo 1.docx
+
+modulo 1 ESTADISTICAS VALERA VS ESTUVACUY.xlsx
+
+modulo1 Análisis de la tiendita II.docx
+
+Usa estos tres archivos como única fuente de datos; no inventes registros ni montos.
+
+1. Hoja BD_Integrada_M1 – Base de datos de transacciones
+Construye una hoja llamada BD_Integrada_M1 con una tabla única que contenga todas las transacciones de ventas del período analizado para ambas sedes (Estovacuy y Valera). Cada fila debe ser una transacción individual.
+
+Crea las columnas en este orden:
+
+ID_Transaccion
+
+Tipo: texto.
+
+Si el origen no trae ID, genera uno único por fila, por ejemplo: ESTO-001, ESTO-002 para Estovacuy; VAL-001, VAL-002 para Valera.
+
+Sede
+
+Tipo: texto.
+
+Valores: Estovacuy o Valera.
+
+Fecha
+
+Tipo: fecha.
+
+Toma la fecha de la transacción según el control de ventas / registros.
+
+Codigo_Producto
+
+Tipo: texto (ej.: PAP-08, LAS-02, SUB-04).
+
+Categoria_Producto
+
+Tipo: texto.
+
+Ejemplos: PAPELERIA, LASER / GRABADO, VINIL, SUBLIMACION; y las categorías que aparezcan para Valera según el Excel.
+
+Descripcion_Producto
+
+Tipo: texto.
+
+Nombre o descripción del producto/servicio.
+
+Cliente
+
+Tipo: texto.
+
+Nombre del cliente si aparece en las tablas; si no está, deja la celda vacía.
+
+Cantidad
+
+Tipo: número (unidades vendidas en la transacción).
+
+Costo_Unitario_USD
+
+Tipo: número decimal.
+
+Precio unitario en USD cuando esté disponible.
+
+Monto_Venta_USD
+
+Tipo: número decimal.
+
+Total de la venta en USD según el control de ventas o la conversión que ya aparece en el Excel (no recalcules ni cambies montos).
+
+Moneda_Origen
+
+Tipo: texto.
+
+Ej.: Bs, USD, según lo que indiquen las tablas de pagos y conversiones (especialmente para Estovacuy donde muchas operaciones entran primero en bolívares).
+
+Canal_Pago
+
+Tipo: texto.
+
+Ej.: Transferencia, AirTM, Efectivo, Binance, Plantas, Otro, según el detalle de Valera y Estovacuy.
+
+Referencia_Pago
+
+Tipo: texto.
+
+Número o código de referencia de la operación, si está en el Excel; si no, dejar vacío.
+
+Tipo_Cliente
+
+Tipo: texto.
+
+Ej.: Estudiante, Docente, Administrativo, Externo; solo si el dato existe en los documentos, de lo contrario deja vacío.
+
+Observaciones
+
+Tipo: texto.
+
+Campo libre para anotaciones que aparezcan en las tablas (por ejemplo, nota sobre cambio de moneda, pedidos especiales).
+
+Reglas para esta hoja
+
+Incluye todas las transacciones que aparecen en el Excel de Módulo 1 y los informes (Estovacuy y Valera).
+
+No inventes campos ni montos; si algo no existe en los archivos, deja la celda vacía.
+
+Asegúrate de que la suma de Monto_Venta_USD por sede pueda reproduir los totales reportados en los documentos (Estovacuy ≈ 2.197,00 USD; Valera ≈ 3.004,13 USD).
+
+2. Hoja KPIs_M1_Sedes – Indicadores por sede
+Crea una hoja llamada KPIs_M1_Sedes con una tabla de resumen donde:
+
+Columnas: KPI, Estovacuy, Valera.
+
+Cada fila es un indicador estadístico clave.
+
+Incluye al menos las siguientes filas/KPIs (calculados a partir de BD_Integrada_M1):
+
+Total_ventas_USD
+
+Suma de Monto_Venta_USD por sede.
+
+Numero_transacciones
+
+Conteo de filas por sede.
+
+Ticket_promedio_USD
+
+Media de Monto_Venta_USD por sede.
+
+Mediana_monto_venta_USD
+
+Mediana de Monto_Venta_USD por sede.
+
+Moda_monto_venta_USD
+
+Moda de Monto_Venta_USD por sede.
+
+Desviacion_estandar_monto_venta_USD
+
+Desviación estándar por sede.
+
+Coeficiente_variacion_monto_venta
+
+Desviación estándar / media, por sede.
+
+%_ventas_menores_50_USD
+
+Porcentaje de transacciones con Monto_Venta_USD < 50, por sede (especialmente relevante para Estovacuy, donde más del 87% de operaciones están debajo de 50 USD).
+
+%_ingresos_en_bolivares_Estovacuy
+
+Para Estovacuy: porcentaje de ingresos cuyo Moneda_Origen = Bs sobre el total de Monto_Venta_USD de la sede (debería aproximarse a la proporción ≈68% indicada en el informe).
+
+%_ingresos_transferencias_Valera
+
+%_ingresos_AirTM_Valera
+
+%_ingresos_efectivo_Valera
+
+%_ingresos_Binance_Valera
+
+%_ingresos_plantas_Valera
+
+Para Valera: porcentaje de ingresos por cada Canal_Pago sobre el total de ventas de la sede, reproduciendo los patrones reportados (aprox. 59% transferencias, 31% AirTM, 6% efectivo, 3% Binance, 1% plantas).
+
+3. Hoja Estructura_Categorias_M1 – Ventas por categoría y sede
+Crea una hoja llamada Estructura_Categorias_M1 con una tabla donde:
+
+Columnas: Sede, Categoria_Producto, Ventas_USD, %_del_total_sede.
+
+Llena la tabla así:
+
+Para Estovacuy, usa los totales que ya están en los informes de inventario/rotación y ventas:
+
+Papelería: 863,50 USD.
+
+Láser / Grabado: 791,50 USD.
+
+Vinil: 367,00 USD.
+
+Sublimación: 175,00 USD.
+
+Calcula el %_del_total_sede tomando como base el total 2.197,00 USD.
+
+Para Valera, agrupa las transacciones en BD_Integrada_M1 por Categoria_Producto según sea posible:
+
+Calcula Ventas_USD por categoría y luego el %_del_total_sede usando el total de Valera (≈ 3.004,13 USD).
+
+Si alguna transacción no puede clasificarse con seguridad en una categoría sin inventar, puedes dejarla en una categoría genérica como Sin_categoria o similar.
+
+4. Hoja opcional Notas_Validacion_M1
+Crea, si es necesario, una hoja llamada Notas_Validacion_M1 donde registres:
+
+Cualquier diferencia entre los totales calculados en el Excel y los valores reportados en los documentos Word (por ejemplo, si algún subtotal por categoría difiere).
+
+Breves notas explicativas (ej.: “En el control de Valera hay una transacción sin categoría explícita; se clasificó como ‘Otro’ para no perder el dato”).
+
+Si no encuentras inconsistencias relevantes, esta hoja puede quedar vacía o no ser creada.
+
+5. Reglas generales
+Usa exclusivamente los datos de los tres archivos de entrada; no inventes valores ni categorías nuevas que no estén respaldadas por los documentos.
+
+Respeta las cifras clave de los informes (totales por sede, totales por categoría, proporciones de métodos de pago) y asegúrate de que tus agregaciones puedan reproducirlas.
+
+Entrega un archivo Excel con, al menos, las hojas:
+
+BD_Integrada_M1
+
+KPIs_M1_Sedes
+
+Estructura_Categorias_M1
+
+(Opcional) Notas_Validacion_M1
+
+Este archivo será el “Módulo 1 consolidado” y servirá como base para los módulos siguientes y para el Dashboard del Módulo 8.
+
+---
+v}**PROMPT 2 – VIBE CODE
+MÓDULO 2: ANÁLISIS COMPARATIVO POR SUCURSAL (ESTOVACUY VS. VALERA)**
+
+Contexto del proyecto
+
+Estamos en el Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B). El Módulo 2: Análisis por Sucursal responde a la pregunta:
+
+“¿Existen diferencias en el desempeño de ventas entre la sucursal de Estovacuy (Carvajal) y la de Valera?”
+
+Su objetivo es comparar descriptivamente el comportamiento de ventas entre ambas sucursales mediante estadísticos paralelos y gráficos comparativos, para identificar fortalezas y diferencias por sede.
+
+Este Módulo 2 debe apoyarse en la base de datos de ventas y producir tablas comparativas que luego se usarán en el Módulo 8 (Síntesis y Dashboard).
+
+Archivos de entrada que debes leer
+
+modulo-2-ESTADISTICAS-VALERA-VS-ESTUVACUY.xlsx-ESTOVACUY.csv (detalle de ventas, principalmente Estovacuy).
+
+modulo-2-Fase-2-modulo-4-1.pdf (análisis temporal y comparativo por sucursal).
+
+modulo-2-monografia.txt (interpretaciones y descripción estadística del módulo).
+
+Estos documentos pueden estar etiquetados como “Fase 2 del Módulo 4”, pero en el proyecto integrador se utilizan formalmente como Módulo 2: Análisis por Sucursal.
+
+1. Hoja BD_Temporal_M2 – Base de datos temporal y por sucursal
+Construye una hoja llamada BD_Temporal_M2 que extienda la base de datos del Módulo 1 con información temporal y de sucursal, usando los datos del CSV y lo que esté disponible en los otros archivos.
+
+Cada fila debe ser una transacción; crea las columnas siguientes (en este orden):
+
+ID_Transaccion
+
+Tipo: texto.
+
+Si el CSV no trae ID, genera uno único (ej.: ESTO-M2-001, VAL-M2-001).
+
+Sede
+
+Tipo: texto.
+
+Valores: Estovacuy o Valera.
+
+Usa la información explícita del CSV y del PDF; si alguna tabla es solo de Estovacuy, marca Estovacuy.
+
+Fecha
+
+Tipo: fecha.
+
+A partir de la columna de fecha del CSV y/o tablas del PDF.
+
+Codigo_Producto
+
+Tipo: texto (ej.: PAP-08, LAS-02, etc.), si está disponible; si no, deja vacío.
+
+Categoria_Producto
+
+Tipo: texto (ej.: PAPELERIA, LASER / GRABADO, VINIL, SUBLIMACION), cuando esté en los datos.
+
+Descripcion_Producto
+
+Tipo: texto; usa nombre/descripción cuando aparezca.
+
+Cantidad
+
+Tipo: número (unidades).
+
+Monto_Venta_USD
+
+Tipo: número decimal; total de la transacción en USD según el CSV/tablas.
+
+Moneda_Origen
+
+Tipo: texto (ej.: Bs, USD), si está indicado; si no aparece, deja vacío.
+
+Canal_Pago
+
+Tipo: texto (ej.: Transferencia, AirTM, Efectivo, Binance, Plantas); si el detalle por canal no está por transacción, se dejará vacío y se trabajará en KPIs globales.
+
+Mes
+
+Tipo: texto (ej.: Enero, Febrero, Marzo), calculado a partir de Fecha.
+
+Semana_Relativa
+
+Tipo: entero.
+
+Número de semana relativa dentro del período analizado (ej.: 10–18, según el informe). Usa el criterio del PDF: asigna semana a partir de rangos de fechas (por ejemplo, 08/03–14/03 = Semana 11).
+
+Es_Pico
+
+Tipo: booleano (TRUE / FALSE).
+
+Marca TRUE para registros en semanas/meses identificados como picos de ventas en el PDF (por ejemplo, semana 11, mes de marzo); FALSE en los demás.
+
+Es_Valle
+
+Tipo: booleano.
+
+Marca TRUE para registros en semanas/meses identificados como valles (por ejemplo, semanas de baja, mes con menor frecuencia); FALSE en los demás.
+
+Reglas para esta hoja
+
+No dupliques transacciones ya existentes en otra base: si alguna fila coincide con BD del Módulo 1, simplemente asegúrate de que aquí tenga las columnas temporales necesarias.
+
+Si algún dato no existe en los archivos (por ejemplo, Canal_Pago por transacción), deja la celda vacía en lugar de inventarlo.
+
+2. Hoja Comparativo_Mensual_M2 – KPIs mensuales por sucursal
+Crea una hoja llamada Comparativo_Mensual_M2 con una tabla de comparación de ventas mensuales entre Estovacuy y Valera.
+
+Estructura de la tabla:
+
+Columnas: Mes, Sede, N_Transacciones, Total_USD, Media_Monto_USD, Mediana_Monto_USD, %_Transacciones_del_Total_Sede.
+
+Cada fila representa una combinación Mes–Sede.
+
+A partir de BD_Temporal_M2:
+
+Calcula, para cada sede y mes:
+
+N_Transacciones (conteo de filas).
+
+Total_USD (suma de Monto_Venta_USD).
+
+Media_Monto_USD (promedio del monto por transacción).
+
+Mediana_Monto_USD (mediana del monto).
+
+%_Transacciones_del_Total_Sede (porcentaje de transacciones del mes sobre el total anual/semestral de la sede).
+
+Usa los datos del PDF/TXT como referencia para validar:
+
+Para Estovacuy, deben reproducirse los totales mensuales reportados (por ejemplo, marzo y abril, con sus 95 y 54 transacciones y respectivos totales).
+
+Para Valera, reconstruye los mismos indicadores mensuales según las tablas de ventas por sucursal.
+
+Añade comentarios (pueden ser celdas adicionales o notas) señalando:
+
+En qué meses cada sede concentra mayor número de transacciones.
+
+En qué meses el ticket promedio es mayor, incluso si la frecuencia es menor (meses “valle con ticket alto”).
+
+3. Hoja Comparativo_Semanal_M2 – KPIs semanales por sucursal
+Crea una hoja llamada Comparativo_Semanal_M2 con una tabla de comparación semanal entre Estovacuy y Valera, para las semanas que el informe detalle (ejemplo: semanas 10–18).
+
+Columnas:
+
+Semana_Relativa.
+
+Sede.
+
+Periodo_Fechas (texto: rango de fechas correspondiente, según PDF).
+
+N_Transacciones.
+
+Total_USD.
+
+Media_Monto_USD.
+
+Observacion (texto breve: “Pico de actividad”, “Valle”, “Repunte”, etc.).
+
+A partir de BD_Temporal_M2:
+
+Agrupa por Semana_Relativa y Sede.
+
+Calcula los mismos indicadores (conteo, suma, media).
+
+Usa el PDF/TXT para validar que, al menos para Estovacuy, los valores semanales coinciden (por ejemplo, semana 11 como pico, semanas 14 y 17 como valles).
+
+En Observacion, destaca:
+
+Picos (semana de mayor actividad por sede).
+
+Valles (semanas con pocas transacciones).
+
+Repuntes (semana de recuperación parcial tras un valle).
+
+4. Hoja KPIs_Sucursal_M2 – Resumen comparativo por sede
+Crea una hoja llamada KPIs_Sucursal_M2 con una tabla de indicadores globales por sucursal (similar a Módulo 1, pero orientado a comparación).
+
+Columnas:
+
+KPI, Estovacuy, Valera.
+
+Incluye, al menos:
+
+Total_ventas_USD (en todo el período analizado).
+
+Numero_transacciones (total por sede).
+
+Ticket_promedio_USD (media global de Monto_Venta_USD por sede).
+
+Mediana_monto_venta_USD.
+
+Moda_monto_venta_USD.
+
+Desviacion_estandar_monto_venta_USD.
+
+Coeficiente_variacion_monto_venta.
+
+%_Transacciones_en_Mes_Pico (por sede, proporción de transacciones concentradas en su mes de mayor actividad).
+
+%_Transacciones_en_Mes_Valle.
+
+Estos indicadores deben permitir ver si:
+
+Alguna sede opera más como “micro-ticket de alta rotación” (muchas ventas pequeñas) frente a otra con menos ventas pero montos mayores, como ya apuntan los informes.
+
+5. Hoja Notas_Validacion_M2 y Comentarios_M2
+Crea una hoja Notas_Validacion_M2 donde:
+
+Indiques que los documentos utilizados están titulados como “Fase 2 del Módulo 4”, pero se emplean en el proyecto como Módulo 2 – Análisis por Sucursal.
+
+Registres cualquier discrepancia numérica entre el CSV, el PDF y el TXT (por ejemplo, si algún total semanal calculado no coincide exactamente con la tabla del informe), sin modificar los datos: solo anota ambos valores y una breve nota.
+
+Crea una hoja Comentarios_M2 (o, si prefieres, añade un bloque de texto en KPIs_Sucursal_M2) con un análisis integrado breve (5–10 líneas), donde:
+
+Describas las diferencias clave entre Estovacuy y Valera en:
+
+Total de ventas.
+
+Número de transacciones.
+
+Ticket promedio y variabilidad.
+
+Señales cómo los picos y valles temporales se comportan en cada sede.
+
+Plantees una recomendación general:
+
+Por ejemplo, ajustar inventarios y horarios de atención según los picos de cada sede, y considerar estrategias de precio/paquete para valles.
+
+6. Reglas generales
+No inventes ni corrijas cifras: usa exclusivamente los datos de los archivos proporcionados.
+
+Si alguna agregación desde BD_Temporal_M2 no coincide con un valor reportado en el PDF/TXT, no sobrescribas: registra ambos valores en Notas_Validacion_M2.
+
+Todas las hojas deben quedar en formato de tabla de Excel (ListObject), listas para ser usadas en tablas dinámicas y gráficos comparativos (barras dobles por sucursal, líneas de tiempo) en el dashboard del Módulo 8.
+
+Este archivo Excel del Módulo 2 (BD + KPIs + comparativos + comentarios) será tu “Módulo 2 consolidado” y se integrará con el del Módulo 1 para construir el análisis global por sucursal y la capa temporal del dashboard final.
+
+
+---
+
+**PROMPT 3 – VIBE CODE
+MÓDULO 3: PORTAFOLIO DE PRODUCTOS Y ANÁLISIS DE PARETO – LA TIENDITA UVM**
+
+Contexto del proyecto
+
+Dentro del Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B), el Módulo 3: Portafolio de Productos (Pareto) responde a la pregunta:
+
+“¿Qué productos concentran el 80% de las ventas de La Tiendita UVM (regla 80/20)?”
+
+El objetivo es identificar productos y categorías de mayor y menor impacto en las ventas, aplicando el Análisis de Pareto y la Clasificación ABC, para orientar decisiones de inventario, producción y merchandising.
+
+Archivos de entrada que debes leer
+
+modulo-3.pdf
+
+modulo-3-b-2.pdf
+
+Ambos contienen análisis sobre Pareto y el portafolio; tu tarea es integrarlos en un solo Excel con datos, KPIs y comentarios, listo para el dashboard.
+
+1. Hoja Pareto_Productos_M3 – Tabla de Pareto por producto
+Crea una hoja llamada Pareto_Productos_M3 y reconstruye, con base en modulo-3.pdf, la tabla completa de Pareto por producto (Tabla 2 del informe).
+
+Columnas:
+
+N_Producto
+
+Tipo: entero (1–28), orden de importancia según ventas.
+
+Producto
+
+Tipo: texto.
+
+Nombre del tipo de producto (ej.: Termo Corneta Grabado, Kit Corporativo, Franela personalizada, Kit Carnet Estudiantil, Bolígrafo Metálico, etc.).
+
+fi_USD
+
+Tipo: número decimal.
+
+Ventas en USD por producto (frecuencia absoluta en valor).
+
+hi_%
+
+Tipo: número decimal.
+
+Frecuencia relativa (%), calculada como fi_USD / Total_ventas * 100, respetando los valores del informe.
+
+Fi_USD
+
+Tipo: número decimal.
+
+Frecuencia acumulada absoluta (suma progresiva de fi_USD).
+
+Hi_%
+
+Tipo: número decimal.
+
+Frecuencia acumulada relativa (%), acumulación de hi_%.
+
+Clase_ABC
+
+Tipo: texto: A, B o C.
+
+Usa la clasificación ABC que aparece en el informe.
+
+Verifica que los totales y porcentajes coincidan con los del documento:
+
+Total ventas: 2.197,00 USD.
+
+Clase A: 9 productos, 1.761,00 USD (80,15%).
+
+Clase B: 8 productos, 308,00 USD (14,02%).
+
+Clase C: 11 productos, 128,00 USD (5,83%).
+
+Añade, en esta misma hoja, celdas de comentario (o filas aparte) que indiquen:
+
+Que 9 de 28 productos (32,14%) concentran el 80,15% de las ventas, validando la regla 80/20 en La Tiendita UVM.
+
+Que los 5 primeros productos (Termo Corneta, Kit Corporativo, Franela, Kit Carnet, Bolígrafo Metálico) explican alrededor de 62,70% de los ingresos, justificando priorizar su stock y producción.
+
+2. Hoja ABC_Portafolio_M3 – Resumen por clase ABC
+Crea una hoja llamada ABC_Portafolio_M3 con una tabla resumen de la Clasificación ABC (Tabla 3 del informe).
+
+Columnas:
+
+Clase (A, B, C).
+
+N_Productos (cantidad de productos en la clase).
+
+%_Portafolio (porcentaje de productos del total).
+
+Ventas_USD (monto total por clase).
+
+%_Ventas (porcentaje del total de ventas que aporta la clase).
+
+Usa los valores del informe:
+
+Clase A: 9 productos (32,14%), 1.761,00 USD (80,15%).
+
+Clase B: 8 productos (28,57%), 308,00 USD (14,02%).
+
+Clase C: 11 productos (39,29%), 128,00 USD (5,83%).
+
+Añade comentarios en esta hoja:
+
+Explica que Clase A representa los “pocos vitales” (productos críticos para el flujo de caja).
+
+Que Clase B son productos importantes complementarios (aportan ingresos relevantes, pero no dominan la estructura).
+
+Que Clase C son los “muchos triviales” que deben evaluarse en función de su margen, rotación y esfuerzo operativo (candidatos a optimización o venta cruzada).
+
+3. Hoja Frecuencias_Categorias_M3 – Frecuencias por categorías
+Usando modulo-3-b-2.pdf, reconstruye en una hoja llamada Frecuencias_Categorias_M3 la tabla de frecuencias por categorías de productos (Tabla Nº 01).
+
+Columnas:
+
+Categoria_Producto
+
+Ej.: Kit Carnet/Porta Carnet, Termos, Franelas, Caja/Bolsa de Regalo, Bolígrafo Grabado, Agendas, Llaveros, Mini Blocks, Mouse Pads, Otros.
+
+fi (frecuencia absoluta).
+
+hi (frecuencia relativa).
+
+% (hi × 100).
+
+Usa los valores reportados:
+
+Kit Carnet / Porta Carnet: fi = 32; % = 22%.
+
+Termos: 26; 18%.
+
+Franelas: 22; 15%.
+
+Caja/Bolsa de Regalo: 18; 12%.
+
+Bolígrafo: 14; 10%.
+
+Agendas: 12; 8%.
+
+Llaveros: 11; 7%.
+
+Mini Blocks: 6; 4%.
+
+Mouse Pads: 3; 2%.
+
+Otros: 3; 2%.
+
+Total: 147 (100%).
+
+En esta misma hoja, calcula:
+
+Media_frecuencia = 147 / 10 ≈ 14,7.
+
+Rango = 32 – 3 = 29.
+
+Desviacion_Estandar_frecuencia ≈ 9,79.
+
+Coeficiente_Variacion_frecuencia (CV) ≈ 66,6%.
+
+Añade comentarios:
+
+Indica que el CV alto (~66%) muestra alta heterogeneidad: la media 14,7 no describe bien la distribución, justificando el uso de Pareto para segmentar “pocos vitales” vs. “muchos triviales”.
+
+Señala que las tres primeras categorías acumulan ~54,42% de las solicitudes y las cinco primeras llegan a ~76,19%, mostrando nuevamente un patrón parecido al 80/20 a nivel de categorías.
+
+4. Hoja Picos_Triviales_M3 – Grupos de categorías (pocos vitales vs triviales)
+Crea una hoja llamada Picos_Triviales_M3 que sintetice el Pareto por categorías en grupos:
+
+Columnas:
+
+Grupo (ej.: Pocos_Vitales, Zona_Transicion, Muchos_Triviales).
+
+Categorias_incluidas (lista de categorías).
+
+%_Solicitudes (porcentaje acumulado de fi).
+
+Comentario.
+
+Contenido sugerido (según el análisis de modulo-3-b-2.pdf):
+
+Pocos_Vitales:
+
+Categorías: Kit Carnet / Porta Carnet, Termos, Franelas.
+
+%_Solicitudes: ≈54,42%.
+
+Comentario: productos de identidad institucional y uso frecuente; requieren stock robusto.
+
+Zona_Transicion:
+
+Categorías: + Caja/Bolsa de Regalo, + Bolígrafo Grabado.
+
+%_Solicitudes: ≈76,19%.
+
+Comentario: productos complementarios que refuerzan ventas de los vitales, útiles para promociones y paquetes.
+
+Muchos_Triviales:
+
+Categorías: Agendas, Llaveros, Mini Blocks, Mouse Pads, Otros.
+
+%_Solicitudes: ≈23,81%.
+
+Comentario: riesgo de capital inmovilizado si se saturan inventarios; candidatos a optimización, venta cruzada y revisión de portafolio.
+
+5. Hoja Comentarios_M3 y Notas_Redundancia_M3
+Crea la hoja Comentarios_M3 con un análisis integrado (8–12 líneas) que:
+
+Confirme empíricamente el Principio de Pareto en La Tiendita:
+
+9 productos de 28 (Clase A) concentran 80,15% de ventas.
+
+Las categorías más demandadas también muestran concentraciones similares (top 3 y top 5).
+
+Destaque la coherencia entre Pareto por producto y por categoría, señalando que los “pocos vitales” productos se ubican en las mismas familias (carnets, termos, franelas, bolígrafos, agendas).
+
+Justifique estadísticamente, usando el CV alto de frecuencias por categoría, que no basta la media simple para describir el portafolio; es necesario segmentar.
+
+Señale las implicaciones operativas:
+
+Stock de seguridad y prioridad de reposición para Clase A y categorías vitales.
+
+Revisión de Clase C y categorías triviales para evitar sobrestock.
+
+Uso de venta cruzada y paquetes para mover categorías de transición y triviales.
+
+Crea la hoja Notas_Redundancia_M3 para:
+
+Registrar las redundancias conceptuales detectadas entre modulo-3.pdf y modulo-3-b-2.pdf: definiciones repetidas de Pareto, ABC, media, mediana, moda, varianza, etc., que ya están trabajadas en otros módulos.
+
+Señalar que el contenido realmente nuevo y útil para el dashboard es:
+
+La tabla de Pareto por producto (28 filas) con clasificación ABC.
+
+La tabla de frecuencias por categorías (10 filas) con medidas de dispersión.
+
+La síntesis de grupos (pocos vitales / transición / triviales) y las recomendaciones de stock y merchandising.
+
+6. Reglas generales
+No inventes ni corrijas cifras: usa exactamente los valores que aparecen en los informes para fi, hi, clasificaciones ABC y porcentajes.
+
+Si encuentras pequeñas diferencias de redondeo entre los documentos (por ejemplo, una categoría con 21,99% vs. 22%), registra la observación en Notas_Redundancia_M3, pero no modifiques los datos originales.
+
+Todas las hojas deben quedar como tablas de Excel (objetos tabla), listas para:
+
+Gráficos de Pareto (barras + curva acumulada).
+
+Gráficos de barras por categoría.
+
+Tablas dinámicas para el dashboard del Módulo 8.
+
+Con este archivo del Módulo 3 (Pareto + ABC + categorías + comentarios), podremos cruzar el portafolio de productos (M3) con las ventas globales (M1) y la dinámica por sucursal/tiempo (M2), para que el dashboard responda claramente qué productos sostienen el negocio, en qué rubros, y qué tan concentrado está el riesgo de inventario y de ingresos.
+
+
+---
+
+
+**PROMPT 4 – VIBE CODE
+MÓDULO 4: COMPORTAMIENTO TEMPORAL DE LAS VENTAS – LA TIENDITA UVM (SEDE ESTOVACUY)**
+
+Contexto del proyecto
+
+En el Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B), el Módulo 4: Comportamiento Temporal de las Ventas busca responder:
+
+“¿Existen patrones o picos de ventas según el día, la semana o el mes en La Tiendita UVM?”
+
+El foco aquí es la sede Estovacuy durante el cuatrimestre febrero–mayo 2026, describiendo la distribución temporal por mes, semana y día, identificando picos y valles, y generando KPIs que alimentarán el dashboard del Módulo 8.
+
+Archivos de entrada
+
+modulo-4-b-Radiografia-estadistica-de-la-Tiendita-UVM-Fase-II.docx (análisis y síntesis temporal).
+
+modulo-4-a-PROYECTO-TIENDITA.xlsx (CONTROL DE VENTAS TIENDITA UVM SEDE ESTOVACUY, enero–junio, con tablas mensuales, semanales y diarias).
+
+Tu tarea es generar un archivo Excel con hojas de datos temporales, KPIs y comentarios estadísticos, listo para el Módulo 8.
+
+1. Hoja BD_Temporal_M4 – Base de datos temporal Estovacuy
+Usando la base depurada de ventas en modulo-4-a-PROYECTO-TIENDITA.xlsx, construye una hoja llamada BD_Temporal_M4 que contenga solo las transacciones de la sede Estovacuy en el período febrero–mayo 2026.
+
+Cada fila = una transacción. Columnas:
+
+ID_Transaccion
+
+Tipo: texto.
+
+Si no existe ID, genera uno único (ej.: ESTO-M4-001, etc.).
+
+Fecha
+
+Tipo: fecha.
+
+Toma la fecha desde el control de ventas.
+
+Mes
+
+Tipo: texto (Febrero, Marzo, Abril, Mayo), calculado a partir de Fecha.
+
+Numero_Semana_Mes
+
+Tipo: entero (1, 2, 3, 4, etc.).
+
+Semana relativa dentro del mes según la segmentación que usa el Excel (Semana 1–4 por mes).
+
+Dia_Semana
+
+Tipo: texto (Lunes, Martes, … Domingo).
+
+CodProducto
+
+Tipo: texto (PAP-08, LAS-02, etc.), si está en la tabla.
+
+Categoria
+
+Tipo: texto (Papelería, Láser/Grabado, Vinil, Sublimación, etc.), si está disponible.
+
+Cliente
+
+Tipo: texto; nombre del cliente si aparece, en caso contrario vacío.
+
+Detalle
+
+Tipo: texto; descripción del producto/servicio.
+
+Cantidad
+
+Tipo: número (unidades).
+
+Costo_Unitario_USD
+
+Tipo: número decimal; precio unitario.
+
+Monto_Venta_USD
+
+Tipo: número decimal; total de la transacción.
+
+Reglas
+
+Filtra el período para incluir solo febrero, marzo, abril y mayo 2026 (no metas enero ni junio en este módulo).
+
+No modifiques montos; usa tal cual los valores del control de ventas.
+
+2. Hoja KPI_Mensual_M4 – KPIs mensuales del cuatrimestre
+Crea una hoja llamada KPI_Mensual_M4 y reconstruye la tabla mensual del cuatrimestre usando BD_Temporal_M4 y las tablas del Excel.
+
+Columnas:
+
+Mes (Febrero, Marzo, Abril, Mayo).
+
+Fa_USD (total ventas mensuales, suma de Monto_Venta_USD).
+
+Fr_% (proporción de cada mes respecto al total del cuatrimestre).
+
+Dias_Activos (número de días con ventas en el mes).
+
+Promedio_Diario (Fa_USD / Dias_Activos).
+
+Promedio_Global_Mes (el valor de referencia que aparece como constante en el Excel, ej.: 40,23).
+
+Estatus (texto: Pico / Valle según el informe).
+
+Verifica que coincida con los valores del Excel y Word, por ejemplo:
+
+Febrero:
+
+Fa_USD ≈ 166,00 USD.
+
+Fr_% ≈ 8,05%.
+
+Dias_Activos = 13.
+
+Promedio_Diario ≈ 12,77.
+
+Estatus: Valle.
+
+Marzo:
+
+Fa_USD ≈ 767,00 USD.
+
+Fr_% ≈ 37,21%.
+
+Dias_Activos = 15.
+
+Promedio_Diario ≈ 51,13.
+
+Estatus: Pico.
+
+Abril:
+
+Fa_USD ≈ 1.088,00 USD.
+
+Fr_% ≈ 52,79%.
+
+Dias_Activos = 13.
+
+Promedio_Diario ≈ 83,69.
+
+Estatus: Pico.
+
+Mayo:
+
+Fa_USD ≈ 40,00 USD.
+
+Fr_% ≈ 1,94%.
+
+Dias_Activos = 3.
+
+Promedio_Diario ≈ 13,33.
+
+Estatus: Valle.
+
+Añade comentarios en esta hoja (en celdas texto):
+
+Explica que marzo y abril concentran más del 90% del cuatrimestre (37,21% + 52,79%), siendo meses de alta demanda; febrero y mayo son valles, también por menor número de días trabajados.
+
+Señala que el mayor promedio diario es abril (83,69), lo que indica un pico fuerte de ventas a considerar al planificar inventario y personal.
+
+3. Hoja KPI_Semanal_M4 – KPIs semanales por mes
+Crea una hoja llamada KPI_Semanal_M4 con la tabla de frecuencias semanales por mes.
+
+Columnas:
+
+Mes.
+
+Semana_Mes (1, 2, 3, 4).
+
+Fa_USD_Semana (total USD por semana).
+
+Fi_%_Semana (proporción de esa semana dentro del mes).
+
+Dias_Activos_Semana (días con ventas en la semana).
+
+Promedio_Semanal (Fa_USD_Semana / Dias_Activos_Semana).
+
+Promedio_Global_Semana (el valor de referencia que usa el Excel).
+
+Estatus (Pico / Valle).
+
+Usa BD_Temporal_M4 y las tablas del Excel para reproducir patrones como:
+
+Febrero:
+
+Semana 1: 42 USD (pico).
+
+Semana 2: 30 USD (valle).
+
+Semana 3: 56 USD (valle con frecuencia alta pero promedio moderado).
+
+Semana 4: 38 USD (pico por altos promedios en pocos días).
+
+Marzo:
+
+Semanas 1 y 2: picos (ej.: 332 y 268 USD).
+
+Semana 3: valle (≈129 USD).
+
+Semana 4: pico moderado (≈38 USD).
+
+Abril:
+
+Semana 2 y 3: picos (≈388 y 588 USD).
+
+Semana 1 y 4: valles (≈74 y 38 USD).
+
+Mayo:
+
+Semana 1: pico (≈21 USD).
+
+Semana 2: valle (≈19 USD).
+
+Añade comentarios:
+
+Describe el comportamiento cíclico: picos en primeras semanas de algunos meses y en semanas 2–3 de abril; valles en semanas afectadas por feriados, recesos, quincenas.
+
+Relaciona los valles con factores externos señalados en el informe (Semana Santa, receso académico, fechas de pago), sin inventar datos y tomando las interpretaciones del documento.
+
+4. Hoja KPI_Diario_M4 – KPIs diarios por día de la semana
+Crea una hoja llamada KPI_Diario_M4 con la tabla de frecuencias por día de la semana en el cuatrimestre.
+
+Columnas:
+
+Dia_Semana.
+
+Fa_USD (total ventas por día).
+
+Fr_% (porcentaje de ventas del cuatrimestre).
+
+N_Dias_Con_Ventas.
+
+Promedio_Por_Dia (Fa_USD / N_Dias_Con_Ventas).
+
+Promedio_Global_Dia (valor de referencia del Excel).
+
+Estatus (Pico / Valle).
+
+Reproduce la tabla del Excel:
+
+Ejemplo de valores esperados:
+
+Miércoles:
+
+Fa_USD ≈ 631 USD.
+
+Fr_% ≈ 30,62%.
+
+N_Dias_Con_Ventas = 10.
+
+Promedio_Por_Dia ≈ 63,10.
+
+Estatus: Pico.
+
+Viernes:
+
+Fa_USD ≈ 440 USD.
+
+Fr_% ≈ 21,35%.
+
+N_Dias_Con_Ventas = 7.
+
+Promedio_Por_Dia ≈ 62,86.
+
+Estatus: Pico.
+
+Jueves:
+
+Fa_USD ≈ 343 USD.
+
+Fr_% ≈ 16,64%.
+
+N_Dias_Con_Ventas = 8.
+
+Promedio_Por_Dia ≈ 42,88.
+
+Estatus: Pico.
+
+Lunes:
+
+Fa_USD ≈ 262 USD.
+
+Fr_% ≈ 12,71%.
+
+N_Dias_Con_Ventas = 6.
+
+Promedio_Por_Dia ≈ 43,67.
+
+Estatus: Pico leve.
+
+Martes, sábado: valles moderados.
+
+Domingo: valle extremo (≈4 USD en todo el cuatrimestre).
+
+Añade comentarios:
+
+Señala que miércoles es el día de mayor intensidad, seguido de viernes y jueves, lo que sugiere concentrar estrategias promocionales y stock en mitad de semana.
+
+Explica que martes, sábado y domingo son días de menor actividad; pueden usarse para promociones específicas, ajustes de horario o tareas de reposición/organización.
+
+5. Hoja Comentarios_M4 y Notas_Metodologicas_M4
+Crea la hoja Comentarios_M4 y redacta un análisis integrado (8–12 líneas) que sintetice:
+
+Picos mensuales (marzo–abril) y valles (febrero–mayo).
+
+Picos semanales, especialmente en semanas 1–2 de marzo y 2–3 de abril.
+
+Picos diarios (miércoles, jueves, viernes) y valles (domingo, martes, sábado).
+
+Implicaciones operativas:
+
+Planificar inventario y personal reforzando estos períodos de alta demanda.
+
+Utilizar valles para promociones, mantenimiento o receso controlado, sin perder flujo.
+
+Crea la hoja Notas_Metodologicas_M4 para:
+
+Señalar que la base original presentaba algunas inconsistencias (códigos #N/A, #REF!, etc.), pero que el análisis se basa en la base depurada construida por el equipo, como explica el informe.
+
+Registrar cualquier discrepancia menor que detectes entre la tabla de síntesis (mensual, semanal, diaria) y la base transaccional de BD_Temporal_M4, sin modificar los datos: anota ambos valores y una breve nota.
+
+6. Reglas generales
+No inventes cifras ni cambies montos: usa exactamente los datos del Excel y las tablas del Word como referencia.
+
+Si un cálculo desde BD_Temporal_M4 no coincide con un total ya consolidado en las tablas mensuales/semanales/diarias, registra la discrepancia en Notas_Metodologicas_M4; no sobrescribas los valores del informe.
+
+Deja todas las hojas como tablas de Excel (objetos tabla), listas para alimentar gráficos de líneas y barras temporales en el dashboard del Módulo 8.
+
+Con este archivo del Módulo 4 (BD temporal + KPIs mensuales/semanales/diarios + comentarios), podremos cruzar el patrón temporal de Estovacuy con los productos vitales (M3) y las ventas globales (M1–M2), para que el dashboard muestre claramente cuándo se venden más los productos clave y cómo sincronizar inventario y atención con el calendario académico.
+
+
+---
+
+
+**PROMPT 5 – VIBE CODE
+MÓDULO 5: INVENTARIO Y ROTACIÓN DE PRODUCTOS – LA TIENDITA UVM (SEDE ESTOVACUY)**
+
+Contexto del proyecto
+
+En el Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B), el Módulo 5: Inventario y Rotación de Productos responde a la pregunta:
+
+“¿Qué productos presentan alta, media y baja rotación en el inventario de La Tiendita UVM?”
+
+El foco es la sede Estovacuy, analizando 33 productos activos entre el 13 de enero y el 25 de junio de 2026, para clasificar niveles de rotación, composición del catálogo y distribución de ingresos, como base del dashboard del Módulo 8.
+
+Archivo de entrada principal
+
+modulo-5-inventario_Rotacion_TienditaUVM.docx (estructura de tablas y resultados de rotación).
+
+Base transaccional de referencia
+
+Usa como referencia la base de 147 transacciones y 259 unidades del control de ventas ya trabajada en PROYECTO TIENDITA.xlsx del Módulo 4 (no necesitas volver a reconstruirla; solo valida que los totales coinciden cuando haga falta).
+
+1. Hoja Rotacion_Producto_M5 – Clasificación por producto
+Crea una hoja llamada Rotacion_Producto_M5 y reconstruye la tabla completa por producto (Tabla 1 del informe de rotación).
+
+Columnas:
+
+Codigo_Producto (ej.: PAP-08, LAS-02, LAS-08, PAP-03, PAP-01).
+
+Nombre_Producto.
+
+Categoria (Papelería, Láser/Grabado, Vinil, Sublimación).
+
+N_Transacciones (frecuencia de salida).
+
+Unidades_Vendidas.
+
+Ingresos_USD.
+
+Nivel_Rotacion (Alta, Media, Baja).
+
+Usa exactamente los valores del informe, por ejemplo:
+
+PAP-08: 23 transacciones, 30 unidades, 241,50 USD, Nivel_Rotacion = Alta.
+
+LAS-02: 15 transacciones, 22 unidades, 399,00 USD, Alta.
+
+LAS-08: 13 transacciones, 26 unidades, 137,00 USD, Alta.
+
+PAP-03: 12 transacciones, 12 unidades, 38,00 USD, Alta.
+
+PAP-01: 11 transacciones, 12 unidades, 120,00 USD, Alta.
+
+Verifica que los totales de la tabla sean:
+
+N_Transacciones total = 147.
+
+Unidades_Vendidas total = 259.
+
+Ingresos_USD total = 2.197,00 USD.
+
+Añade en esta hoja, como comentarios (celdas texto o filas aparte):
+
+Indica que 5 productos de alta rotación (≈15,2% del catálogo) concentran 935,50 USD, es decir 42,6% de los ingresos.
+
+Marca explícitamente estos productos clave: PAP-08, LAS-02, LAS-08, PAP-03, PAP-01, como candidatos a KPI “Top productos por rotación e ingreso” para el dashboard.
+
+2. Hoja Rotacion_Nivel_M5 – Resumen por nivel de rotación
+Crea una hoja llamada Rotacion_Nivel_M5 y reproduce la Tabla 2: Resumen por nivel de rotación.
+
+Columnas:
+
+Nivel_Rotacion (Alta, Media, Baja).
+
+N_Productos.
+
+%_Catalogo_Activo.
+
+N_Transacciones.
+
+Unidades.
+
+Ingresos_USD.
+
+%_Ingresos.
+
+Criterio_Gestion (ej.: “Stock mínimo permanente”, “Reabasto periódico”, “Pedido bajo demanda”).
+
+Valores esperados:
+
+Alta:
+
+N_Productos = 5.
+
+%_Catalogo_Activo = 15,2%.
+
+N_Transacciones = 74.
+
+Unidades = 102.
+
+Ingresos_USD = 935,50.
+
+%_Ingresos = 42,6%.
+
+Criterio_Gestion = “Stock mínimo permanente”.
+
+Media:
+
+N_Productos = 7.
+
+%_Catalogo_Activo = 21,2%.
+
+N_Transacciones = 33.
+
+Unidades = 61.
+
+Ingresos_USD = 295,00.
+
+%_Ingresos = 13,4%.
+
+Criterio_Gestion = “Reabasto periódico”.
+
+Baja:
+
+N_Productos = 21.
+
+%_Catalogo_Activo = 63,6%.
+
+N_Transacciones = 40.
+
+Unidades = 96.
+
+Ingresos_USD = 966,50.
+
+%_Ingresos = 44,0%.
+
+Criterio_Gestion = “Pedido bajo demanda”.
+
+Total:
+
+N_Productos = 33, %_Catalogo_Activo = 100%.
+
+N_Transacciones = 147, Unidades = 259, Ingresos_USD = 2.197,00, %_Ingresos = 100%.
+
+Comentarios en esta hoja:
+
+Explica que la mayor parte del catálogo (63,6%) está en baja rotación, lo que implica una mezcla de productos de nicho y artículos con demanda incipiente, relevantes para decisiones de stock y espacio físico.
+
+Señala que los niveles de rotación deben aparecer en el dashboard vinculados a políticas de stock: mínimo permanente (Alta), reabasto periódico (Media), bajo demanda (Baja).
+
+3. Hoja Rotacion_Categoria_M5 – Rotación por categoría
+Crea una hoja llamada Rotacion_Categoria_M5 y reproduce la Tabla 3: Rotación por categoría.
+
+Columnas:
+
+Categoria.
+
+N_Productos.
+
+N_Alta.
+
+N_Media.
+
+N_Baja.
+
+N_Transacciones.
+
+Ingresos_USD.
+
+%_Ingresos.
+
+Valores esperados:
+
+Papelería:
+
+N_Productos = 11.
+
+N_Alta = 3.
+
+N_Media = 4.
+
+N_Baja = 4.
+
+N_Transacciones = 71.
+
+Ingresos_USD = 863,50.
+
+%_Ingresos ≈ 39,3%.
+
+Láser/Grabado:
+
+N_Productos = 8.
+
+N_Alta = 2.
+
+N_Media = 1.
+
+N_Baja = 5.
+
+N_Transacciones = 43.
+
+Ingresos_USD = 791,50.
+
+%_Ingresos ≈ 36,0%.
+
+Vinil:
+
+N_Productos = 10.
+
+N_Alta = 0.
+
+N_Media = 0.
+
+N_Baja = 10.
+
+N_Transacciones = 18.
+
+Ingresos_USD = 367,00.
+
+%_Ingresos ≈ 16,7%.
+
+Sublimación:
+
+N_Productos = 4.
+
+N_Alta = 0.
+
+N_Media = 2.
+
+N_Baja = 2.
+
+N_Transacciones = 15.
+
+Ingresos_USD = 175,00.
+
+%_Ingresos ≈ 8,0%.
+
+Total:
+
+N_Productos = 33, N_Alta = 5, N_Media = 7, N_Baja = 21.
+
+N_Transacciones = 147, Ingresos_USD = 2.197,00, %_Ingresos = 100%.
+
+Comentarios:
+
+Señala que Papelería y Láser/Grabado concentran juntos ≈75,3% de los ingresos, confirmando su rol como pilares del negocio de Estovacuy.
+
+Indica que la categoría Vinil, aunque sin productos de alta rotación, aporta artículos de alto valor unitario (paraguas, fundas, etc.), por lo que debe verse como portafolio diferenciador y no solo por frecuencia.
+
+4. Hoja Productos_Nicho_M5 – Baja rotación, alto valor
+Crea una hoja llamada Productos_Nicho_M5 para captar la paradoja baja rotación–alto valor.
+
+Columnas:
+
+Codigo_Producto.
+
+Nombre_Producto.
+
+N_Transacciones.
+
+Unidades.
+
+Ingresos_USD.
+
+Nivel_Rotacion.
+
+Tipo_Nicho (ej.: Corporativo, Personalizado, Evento, Otro).
+
+Comentario.
+
+Incluye al menos estos casos destacados:
+
+PAP-05 Kit Corporativo:
+
+N_Transacciones = 3.
+
+Unidades = 32.
+
+Ingresos_USD = 338,00.
+
+Nivel_Rotacion = Baja.
+
+Tipo_Nicho = “Corporativo UVM-CICE”.
+
+LAS-01 Termo Vinero:
+
+N_Transacciones = 3.
+
+Unidades = 8.
+
+Ingresos_USD = 104,00.
+
+Nivel_Rotacion = Baja.
+
+Tipo_Nicho = “Evento / regalo institucional”.
+
+Puedes añadir otros productos de baja rotación con ingresos significativos según la tabla principal.
+
+Comentarios:
+
+Explica que estos productos no deben evaluarse solo por frecuencia, sino por impacto en flujo de caja y valor simbólico; en el dashboard deberán ser marcados como “productos de alto valor de nicho” con políticas de stock específicas.
+
+5. Hoja Comentarios_M5 y Conexiones_M3_M5
+Crea la hoja Comentarios_M5 con un análisis integrado (8–12 líneas) que destaque:
+
+Que 5 productos de alta rotación generan 42,6% de los ingresos, en coherencia con el Pareto del Módulo 3 (pocos vitales) que mostraba 9 productos Clase A concentrando 80,15% de ventas.
+
+La coexistencia de baja rotación y alto valor en algunos artículos (kits corporativos, termos especiales), lo que exige políticas de stock diferenciadas y no una regla uniforme de reposición.
+
+La composición del catálogo por categoría, con Papelería y Láser como pilares (≈75% de ingresos), Vinil y Sublimación como categorías de nicho y personalización.
+
+Crea la hoja Conexiones_M3_M5 para vincular Módulo 3 (Pareto) y Módulo 5 (Rotación):
+
+Construye una pequeña tabla donde cada fila tenga:
+
+Codigo_Producto.
+
+Producto_M3 (nombre en la tabla de Pareto de Módulo 3).
+
+Clase_ABC_M3 (A, B, C).
+
+Nivel_Rotacion_M5 (Alta, Media, Baja).
+
+Ingresos_USD_M3 (fi_USD de Pareto).
+
+Señala explícitamente las coincidencias más fuertes, por ejemplo:
+
+PAP-08, LAS-02, LAS-08 como productos Clase A en Módulo 3 y de alta rotación en Módulo 5, candidatos a KPI “Top productos por rotación y ventas” en el dashboard.
+
+6. Reglas generales
+No inventes datos: usa exclusivamente los números del informe del Módulo 5 y, cuando cruces con Módulo 3, utiliza las tablas ya reconstruidas en ese módulo (Pareto y ABC).
+
+Si al reconstruir alguna agregación desde la base transaccional (Módulo 4) no coincide con los valores del informe de rotación, no corrijas el informe: registra la discrepancia en Comentarios_M5 o en una nota adicional, mencionando ambas cifras.
+
+Todas las hojas deben quedar como tablas (ListObjects) en Excel, listas para conectarse a:
+
+Gráficos de barras por nivel de rotación.
+
+Gráficos por categoría.
+
+Segmentadores (Slicers) de productos clave en el dashboard del Módulo 8.
+
+Con este archivo del Módulo 5 (rotación por producto, nivel, categoría, nicho y conexiones con Pareto), el dashboard final podrá mostrar en una sola vista qué productos sostienen las ventas, con qué rotación, en qué categorías y con qué riesgo de stock, tal como exige la síntesis integral del Módulo 8.
+
+
+---
+
+
+**PROMPT 6 – VIBE CODE
+MÓDULO 6: ANÁLISIS DE PRECIOS Y DISTRIBUCIÓN DE MÁRGENES – LA TIENDITA UVM**
+
+Contexto del proyecto
+
+En el Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B), el Módulo 6: Análisis de Precios y Distribución de Márgenes estudia la estructura de precios y existencias del inventario completo (324 productos), para apoyar decisiones sobre fijación de precios, control de inventario y rotación de mercancía.
+
+Tu objetivo es construir un archivo Excel con tablas y KPIs de precios y stock listo para integrarse al dashboard del Módulo 8.
+
+Archivo de referencia
+
+modulo-6.txt (contiene tablas y resultados estadísticos de categorías, rangos de precio, intervalos y medidas descriptivas).
+
+1. Hoja Inventario_Estructura_M6 – Estructura del catálogo por categoría
+Crea una hoja llamada Inventario_Estructura_M6 con una tabla resumen basada en la Tabla 1 (Categoría de productos).
+
+Columnas:
+
+Categoria_Producto.
+
+N_Productos (fas).
+
+Fr_Relativa (frs).
+
+%_Productos.
+
+Comentario.
+
+Usa los valores de la tabla (324 productos en total):
+
+Ropa/Textil: 89 productos (27,47%).
+
+Accesorios: 62 (19,14%).
+
+Papelería: 52 (16,05%).
+
+Perfumería: 33 (10,19%).
+
+Cuidado personal/higiene: 24 (7,41%).
+
+Llaveros: 18 (5,56%).
+
+Alimentos: 13 (4,01%).
+
+Empaques para regalos: 11 (3,40%).
+
+Tecnología: 9 (2,78%).
+
+Termos: 7 (2,16%).
+
+Relojería: 6 (1,85%).
+
+Total: 324 productos (frs = 1,0000; %_Productos = 100%).
+
+Comentarios:
+
+Destaca que ropa y accesorios representan casi la mitad del catálogo, y que papelería completa la tríada de mayor volumen.
+
+Indica que categorías como tecnología y perfumería, aunque menores en cantidad, suelen tener alto valor unitario, relevantes para márgenes.
+
+2. Hoja Rangos_Precio_M6 – Rango de precio (bajo, medio, alto)
+Crea una hoja llamada Rangos_Precio_M6 y reproduce la Tabla 2 (rango de precio).
+
+Columnas:
+
+Rango_Precio (ej.: Bajo, Medio, Alto).
+
+N_Productos (fas).
+
+Fr_Relativa (frs).
+
+Fr_Relativa_Acumulada (Fra).
+
+Frecuencia_Acumulada (Fua).
+
+%_Productos.
+
+Comentario.
+
+Valores esperados:
+
+Bajo:
+
+N_Productos = 126.
+
+Fr_Relativa = 0,3901 (39,01%).
+
+Fr_Relativa_Acumulada = 0,3901.
+
+Frecuencia_Acumulada = 126.
+
+Medio:
+
+N_Productos = 161.
+
+Fr_Relativa = 0,4985 (49,85%).
+
+Fr_Relativa_Acumulada = 0,8885.
+
+Frecuencia_Acumulada = 287.
+
+Alto:
+
+N_Productos = 36.
+
+Fr_Relativa = 0,1115 (11,15%).
+
+Fr_Relativa_Acumulada = 1,0000.
+
+Frecuencia_Acumulada = 323.
+
+Total: 323 productos (hay un producto atípico o registro aparte; respeta la cifra del informe), %_Productos = 100%.
+
+Comentarios:
+
+Señala que la mayor concentración de productos está en rangos medio (49,85%) y bajo (39,01%), lo que refleja una estrategia de mantener precios accesibles y una pequeña franja de productos exclusivos.
+
+3. Hoja Intervalos_Precio_M6 – Intervalos de clase de precio
+Crea una hoja llamada Intervalos_Precio_M6 y reproduce la Tabla 3 (intervalos de clase).
+
+Columnas:
+
+Intervalo_Precio_USD.
+
+N_Productos (fas).
+
+Fr_Relativa (frs).
+
+%_Productos.
+
+Frecuencia_Acumulada (Fua).
+
+Comentario.
+
+Usa los datos del informe:
+
+0,50–20,00:
+
+N_Productos = 262 (81,11%).
+
+Frecuencia_Acumulada = 262.
+
+20,01–40,00:
+
+N_Productos = 26 (8,05%).
+
+Frecuencia_Acumulada = 288.
+
+40,01–60,00:
+
+N_Productos = 17 (5,26%).
+
+Frecuencia_Acumulada = 305.
+
+60,01–80,00:
+
+N_Productos = 8 (2,48%).
+
+Frecuencia_Acumulada = 313.
+
+80,01–100,00:
+
+N_Productos = 1 (0,31%).
+
+Frecuencia_Acumulada = 314.
+
+100,01–120,00:
+
+N_Productos = 3 (0,93%).
+
+Frecuencia_Acumulada = 317.
+
+120,01–140,00:
+
+N_Productos = 4 (1,24%).
+
+Frecuencia_Acumulada = 321.
+
+140,01–160,00:
+
+N_Productos = 2 (0,62%).
+
+Frecuencia_Acumulada = 323.
+
+Comentarios:
+
+Marca que 81,11% de los productos están por debajo de 20 USD, mostrando una fuerte base de productos de bajo precio para el público estudiantil.
+
+Señala que los productos entre 100 y 160 USD son apenas 9 artículos (~2,8%), representando la franja de exclusividad (perfumería y algunos tecnológicos).
+
+4. Hoja Medidas_Precio_Stock_M6 – Medidas de tendencia y dispersión
+Crea una hoja llamada Medidas_Precio_Stock_M6 y reproduce la Tabla 4 (medidas de tendencia central y dispersión) para precio unitario y existencias en unidades.
+
+Columnas:
+
+Medida_Estadistica.
+
+Precio_Unitario_USD.
+
+Existencias_Unid.
+
+Interpretacion.
+
+Valores:
+
+Media:
+
+Precio_Unitario_USD = 19,38.
+
+Existencias_Unid = 3,63.
+
+Mediana:
+
+Precio_Unitario_USD = 15,00.
+
+Existencias_Unid = 1.
+
+Moda:
+
+Precio_Unitario_USD = 15,00.
+
+Existencias_Unid = 1.
+
+Mínimo:
+
+Precio_Unitario_USD = 0,50.
+
+Existencias_Unid = 0.
+
+Máximo:
+
+Precio_Unitario_USD = 160,00.
+
+Existencias_Unid = 115.
+
+Rango:
+
+Precio_Unitario_USD = 159,50.
+
+Existencias_Unid = 115.
+
+Varianza:
+
+Precio_Unitario_USD = 581,69.
+
+Existencias_Unid = 88,62.
+
+Desviación estándar:
+
+Precio_Unitario_USD = 24,12.
+
+Existencias_Unid = 9,41.
+
+Coeficiente de variación:
+
+Precio_Unitario_USD = 124,44%.
+
+Existencias_Unid = 259,14%.
+
+Comentarios:
+
+Indica que mediana y moda de precio (15 USD) coinciden y describen mejor el producto típico, mientras que la media (19,38 USD) está inflada por productos de perfumería y alto valor.
+
+Resalta que CV > 100% en precios y > 250% en existencias muestra una dispersión muy alta, confirmando que el inventario es heterogéneo en valor y cantidad, algo clave para políticas de fijación de precios y reposición.
+
+5. Hoja Categorias_vs_Rangos_M6 – Cruce categoría vs rango de precio
+Basado en el análisis textual (ej. “Gráfico 4” y discusión en modulo-6.txt), arma una hoja llamada Categorias_vs_Rangos_M6 que cruce categoría con rango de precio.
+
+Columnas:
+
+Categoria.
+
+N_Bajo (número de productos en rango bajo).
+
+N_Medio.
+
+N_Alto.
+
+Comentario.
+
+Contenido orientado por el texto:
+
+Ropa/Textil: predominio de productos en rango medio.
+
+Material de oficina / Papelería y empaques: mayoritariamente en rango bajo.
+
+Perfumería: domina el rango alto (la mayoría de los 36 productos altos están en esta categoría).
+
+Tecnología: combinación de medio y alto, con pocos artículos pero de elevado valor.
+
+Comentarios:
+
+Explica que las categorías de alta rotación y bajo costo (Ropa, Papelería, Empaques, algunos accesorios) sostienen el volumen del inventario y las ventas base.
+
+Señala que perfumería y tecnología son responsables de gran parte del alto valor por unidad, siendo claves para márgenes de ganancia aunque su volumen sea menor.
+
+6. Hoja Comentarios_M6 – Síntesis y recomendaciones
+Crea una hoja llamada Comentarios_M6 con un análisis integrado (8–12 líneas) que:
+
+Sintetice la alta dispersión de precios (rango de 0,50 a 160 USD, CV 124%), mostrando que el portafolio va desde productos estudiantiles muy económicos hasta artículos premium.
+
+Destaque que el inventario está concentrado en productos de rango medio y bajo, especialmente en Ropa, Accesorios y Papelería, que soportan el volumen y la accesibilidad.
+
+Señale que perfumería, aunque pequeña en cantidad, es clave para márgenes altos, por lo que debe considerarse estratégicamente.
+
+Incluya las recomendaciones del informe, en forma operacional:
+
+Usar la mediana de 15 USD como referencia para políticas de precio estándar.
+
+Priorizar abastecimiento de productos en rangos bajo y medio, por ser los más frecuentes y demandados.
+
+Diseñar promociones combinadas (productos de precio bajo/medio + productos de rango alto) para mejorar rotación de artículos premium.
+
+Evaluar la expansión moderada de perfumería y/o tecnología, cuidando el riesgo de sobrestock.
+
+7. Reglas generales
+No inventes cifras ni porcentajes; utiliza exactamente los valores del informe modulo-6.txt para tablas y medidas.
+
+Este archivo se concentra solo en precios y márgenes; cualquier cruce con módulos 3 (portafolio) y 5 (rotación) se hará en el Módulo 8, no aquí.
+
+Deja todas las hojas en formato de tabla de Excel (ListObject), listas para hacer:
+
+Gráficos de barras por categoría.
+
+Pareto por rango de precio.
+
+Gráficos de dispersión (precio vs existencias) en el dashboard.
+
+Con este Módulo 6 estructurado, el dashboard final podrá mostrar cómo se distribuyen precios y existencias, qué rangos sostienen el volumen y dónde están los productos de mayor margen, listo para cruzarse con rotación (M5) y ventas (M1–M3) en el diagnóstico integral de La Tiendita UVM.
+
+
+
+---
+
+
+**PROMPT 7 – VIBE CODE
+MÓDULO 7: SATISFACCIÓN DEL CLIENTE (ENCUESTA LIKERT) – LA TIENDITA UVM**
+
+Contexto del proyecto
+
+En el Proyecto Integrador “Radiografía Estadística de la Tiendita UVM” (2026B), el Módulo 7: Satisfacción del Cliente analiza una encuesta Likert de 16 ítems, aplicada a 32 estudiantes/clientes, agrupada en 8 dimensiones de servicio y producto.
+
+Tu objetivo es construir un archivo Excel con hojas de datos y KPIs de satisfacción, listo para integrarse al dashboard del Módulo 8.
+
+Archivo de referencia
+
+MODULO-7-PROYECTO-DE-INVESTIGACION-UVM.docx.md (tablas de frecuencia, medias y síntesis por dimensión).
+
+1. Hoja Dimensiones_Satisfaccion_M7 – Síntesis por dimensión
+Crea una hoja llamada Dimensiones_Satisfaccion_M7 y reproduce el Cuadro 11 (síntesis por dimensión) usando Cuadro 12 para la clasificación de nivel.
+
+Columnas:
+
+Dimension.
+
+Indicador.
+
+Items (ej.: "1, 2").
+
+Media_Item_1.
+
+Media_Item_2.
+
+Media_Dimension.
+
+Moda_Predominante.
+
+Nivel (Alto / Medio / Bajo, según la regla del Cuadro 12).
+
+Valores:
+
+Productos – Calidad
+
+Items: 1, 2.
+
+Media_Item_1 = 4,91.
+
+Media_Item_2 = 4,53.
+
+Media_Dimension = 4,72.
+
+Moda_Predominante = 5.
+
+Nivel = Alto (4,0–5,0).
+
+Accesibilidad – Precio y facilidad de compra
+
+Items: 3, 4.
+
+Medias: 3,50 y 3,31.
+
+Media dimensión: 3,41.
+
+Moda: 3.
+
+Nivel = Medio (2,5–3,9).
+
+Inventario – Variedad y disponibilidad
+
+Items: 5, 6.
+
+Medias: 4,72 y 4,28.
+
+Media dimensión: 4,50.
+
+Moda: 5.
+
+Nivel = Alto.
+
+Diseño e imagen – Presentación
+
+Items: 7, 8.
+
+Medias: 2,75 y 4,78.
+
+Media dimensión: 3,77.
+
+Moda: 4.
+
+Nivel = Medio.
+
+Identidad institucional – Utilidad y pertenencia
+
+Items: 9, 10.
+
+Medias: 4,97 y 4,91.
+
+Media dimensión: 4,94.
+
+Moda: 5.
+
+Nivel = Alto.
+
+Atención al cliente – Calidad
+
+Items: 11, 12.
+
+Medias: 4,53 y 4,06.
+
+Media dimensión: 4,30.
+
+Moda: 5.
+
+Nivel = Alto.
+
+Satisfacción – Experiencia y fidelización
+
+Items: 13, 14.
+
+Medias: 4,63 y 4,81.
+
+Media dimensión: 4,72.
+
+Moda: 5.
+
+Nivel = Alto.
+
+Recomendación – Promoción
+
+Items: 15, 16.
+
+Medias: 4,10 y 3,59.
+
+Media dimensión: 3,85.
+
+Moda: 4.
+
+Nivel = Medio.
+
+Asegúrate de aplicar la regla de Cuadro 12:
+
+Media 4,0–5,0 → Nivel Alto.
+
+Media 2,5–3,9 → Nivel Medio.
+
+Media 1,0–2,4 → Nivel Bajo.
+
+2. Hoja Items_Likert_M7 – Tabla por ítem (1–16)
+Crea una hoja llamada Items_Likert_M7 con una tabla que resuma, para cada ítem 1–16, sus frecuencias y medidas.
+
+Columnas:
+
+Item.
+
+Texto_Pregunta.
+
+Dimension.
+
+Indicador.
+
+Nunca_Fi, Nunca_%.
+
+Casi_Nunca_Fi, Casi_Nunca_%.
+
+Algunas_Veces_Fi, Algunas_Veces_%.
+
+Casi_Siempre_Fi, Casi_Siempre_%.
+
+Siempre_Fi, Siempre_%.
+
+Media.
+
+Moda.
+
+Completa estos campos usando los cuadros de frecuencia y estadísticos por ítem (cuadros 3 a 10 del informe).
+
+Marca explícitamente en esta hoja:
+
+Ítem 9 (“Las libretas son útiles y de buena presentación”):
+
+Media = 4,97 (la más alta de todo el instrumento).
+
+Ítem 7 (“Las gorras ofrecidas tienen diseños atractivos”):
+
+Media = 2,75 (la más baja).
+
+3. Hoja KPI_Clave_M7 – Indicadores clave de satisfacción
+Crea una hoja llamada KPI_Clave_M7 con una tabla de KPIs para el dashboard.
+
+Columnas:
+
+KPI.
+
+Descripcion.
+
+Valor.
+
+Fuente (referencia: dimensión/ítem).
+
+Incluye al menos:
+
+Media_Global_Satisfaccion
+
+Descripción: Media de la dimensión Satisfacción (Experiencia y fidelización).
+
+Valor: 4,72.
+
+Fuente: Dimensión Satisfacción (items 13,14).
+
+Media_Global_Identidad
+
+Descripción: Media de la dimensión Identidad institucional.
+
+Valor: 4,94.
+
+Fuente: Dimensión Identidad (items 9,10).
+
+Media_Accesibilidad
+
+Descripción: Media de la dimensión Accesibilidad (precio y facilidad).
+
+Valor: 3,41 (dimensión más débil).
+
+Fuente: Dimensión Accesibilidad (items 3,4).
+
+Item_Max
+
+Descripción: Ítem con mayor media (“Las libretas son útiles y de buena presentación”).
+
+Valor: 4,97.
+
+Fuente: Ítem 9.
+
+Item_Min
+
+Descripción: Ítem con menor media (“Las gorras ofrecidas tienen diseños atractivos”).
+
+Valor: 2,75.
+
+Fuente: Ítem 7.
+
+Intencion_Recompra_100%
+
+Descripción: Porcentaje de encuestados que responden “Casi siempre” + “Siempre” en intención de recompra y satisfacción.
+
+Valor: 100% (32/32).
+
+Fuente: Ítems 13 y 14, donde todas las respuestas están en niveles altos.
+
+Indicador_Recomendacion
+
+Descripción: Media combinada de recomendación (promoción).
+
+Valor: Ítem 15 = 4,10; Ítem 16 = 3,59.
+
+Fuente: Dimensión Recomendación (items 15,16).
+
+4. Hoja Radar_Dimensiones_M7 – Datos para gráfico de radar
+Crea una hoja llamada Radar_Dimensiones_M7 para preparar los datos de un futuro gráfico tipo radar (telaraña).
+
+Columnas:
+
+Dimension.
+
+Media_Dimension.
+
+Nivel.
+
+Usa las 8 dimensiones y sus medias (de Dimensiones_Satisfaccion_M7), copiando también el Nivel (Alto / Medio / Bajo). Esta hoja será la base para un gráfico radar en el Módulo 8 que muestre el perfil de satisfacción por aspecto (productos, precios, inventario, diseño, identidad, atención, satisfacción, recomendación).
+
+5. Hoja Comentarios_M7 – Análisis cualitativo y conexión con SERVQUAL
+Crea una hoja llamada Comentarios_M7 y redacta un comentario analítico (10–12 líneas) que:
+
+Identifique la dimensión más fuerte (Identidad institucional, media 4,94) y la más débil (Accesibilidad, media 3,41).
+
+Destaque la contradicción en Diseño e imagen:
+
+Ítem 8 (presentación general de productos) tiene media muy alta (4,78).
+
+Ítem 7 (diseño de gorras) tiene media baja (2,75), lo que indica problemas focalizados en un tipo de producto, no en la imagen global.
+
+Resalte la intención de recompra del 100% como un indicador sólido de fidelización (todos los encuestados se ubican en “Casi siempre” o “Siempre” en experiencia y recompra).
+
+Conecte estos resultados con el modelo SERVQUAL (fiabilidad, tangibilidad, capacidad de respuesta, seguridad, empatía):
+
+Argumenta que fiabilidad (calidad de productos), seguridad/empatía (identidad institucional, atención al cliente) están fuertes.
+
+Señala que tangibilidad (diseño específico de ciertos productos, como gorras) y aspectos de capacidad de respuesta (accesibilidad en encontrar productos y precios percibidos) requieren mejoras.
+
+Anticipe cómo estos hallazgos se cruzarán en el Módulo 8 con:
+
+Precios (M6): la debilidad en accesibilidad puede estar relacionada con la estructura de precios y rangos.
+
+Inventario/rotación (M5): la baja aceptación de ciertos productos (gorras) puede vincularse a su rotación y stock.
+
+Ventas (M1–M3): la alta valoración de productos institucionales (libretas, franelas, kits) refuerza el rol de los “pocos vitales” en Pareto.
+
+6. Reglas generales
+No inventes cifras: usa exactamente las medias, porcentajes, frecuencias y clasificaciones que aparecen en MODULO-7-PROYECTO-DE-INVESTIGACION-UVM.docx.md.
+
+Mantén todas las hojas en formato de tabla de Excel (ListObject), para poder construir después:
+
+Gráficos de barras comparativas por dimensión.
+
+Gráfico radar de Radar_Dimensiones_M7.
+
+Gráficos de barras por ítem (Ítem_Max, Ítem_Min).
+
+Este archivo se centra en satisfacción y percepción del cliente; la integración con módulos 1–6 se hará posteriormente en el Módulo 8 (dashboard).
+
+Con este Módulo 7 estructurado, el dashboard final podrá mostrar claramente en qué dimensiones la Tiendita está fuerte (calidad de productos, identidad, atención, satisfacción, fidelización) y dónde debe actuar (accesibilidad de precios y diseños específicos como gorras), conectando la voz del cliente con los datos duros de ventas, inventarios y precios de los otros módulos.
+
+

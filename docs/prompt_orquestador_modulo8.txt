@@ -1,0 +1,153 @@
+PROMPT ORQUESTADOR – VIBE CODE
+SÍNTESIS ESTADÍSTICA Y DASHBOARD FINAL – LA TIENDITA UVM (MÓDULO 8)
+
+Contexto general:
+Proyecto integrador "Radiografía Estadística de La Tiendita UVM" - Módulo 8
+Consolida resultados de Módulos 1 al 7:
+- Módulo 1: Ventas globales
+- Módulo 2: Análisis por sucursal
+- Módulo 3: Portafolio de productos (Pareto)
+- Módulo 4: Comportamiento temporal
+- Módulo 5: Inventario y rotación
+- Módulo 6: Análisis de precios y márgenes
+- Módulo 7: Satisfacción del cliente
+
+Ruta base: /home/bitcoinpapa/Documentos/uvm estadistica modulo 8
+
+ARCHIVO MAESTRO: PROMPT VIBE CODE MÓDULO.txt
+Contiene PROMPT 1 a PROMPT 7, uno por cada módulo.
+
+OBJETIVO GENERAL:
+Integrar los hallazgos de los módulos 1-7 en un dashboard único que proporcione una visión
+integral de La Tiendita UVM, con auditoría estadística y recomendaciones accionables
+para las socias de la cooperativa.
+
+CAPA 0 – LECTURA DEL ARCHIVO MAESTRO
+- Leer PROMPT VIBE CODE MÓDULO.txt
+- Identificar secciones PROMPT 1, PROMPT 2, ..., PROMPT 7
+- Usar cada PROMPT como fuente de trabajo para su módulo correspondiente
+
+CAPA 1–7 – EJECUCIÓN DE LOS 7 MÓDULOS CON AUDITORÍA
+Para cada módulo M = 1..7:
+1. Extraer PROMPT M del archivo maestro
+2. Ejecutar el prompt respetando:
+   - Hojas y nombres de tablas a crear
+   - Columnas, tipos de datos y KPIs
+   - Reglas de validación contra informes originales
+3. Generar archivos de salida:
+   - Modulo1_VentasGlobales.xlsx
+   - Modulo2_AnalisisSucursales.xlsx
+   - Modulo3_PortafolioProductos.xlsx
+   - Modulo4_ComportamientoTemporal.xlsx
+   - Modulo5_InventarioRotacion.xlsx
+   - Modulo6_PreciosMargenes.xlsx
+   - Modulo7_SatisfaccionClientes.xlsx
+4. Cada archivo debe incluir:
+   - Hoja de datos/BD (ej: BD_Integrada_M1, BD_Temporal_M2, etc.)
+   - Hojas de KPIs y tablas resumen
+   - Hojas de Comentarios y Notas/Validación
+5. Auditoría interna:
+   - Verificar sumas de ventas, transacciones, productos, porcentajes
+   - Registrar discrepancias en hoja de notas/validación
+   - NO alterar cifras del informe
+
+Flujo de trabajo:
+Al terminar cada módulo: "Módulo X finalizado, archivo ModuloX_…xlsx generado y auditado. 
+¿Autorizas iniciar Módulo X+1?"
+
+CAPA 8 – CONSTRUCCIÓN DEL EXCEL MAESTRO DEL MÓDULO 8
+Nombre: Modulo8_Dashboard_TienditaUVM.xlsx
+Ubicación: /home/bitcoinpapa/Documentos/uvm estadistica modulo 8
+
+8.1 Hojas obligatorias:
+- Portada_M8: Título, período, sedes, universo de datos, equipo
+- Resumen_Ventas_M1_M2: Tablas y gráficos de KPIs de ventas
+- Resumen_Portafolio_M3_M5: Pareto ABC y rotación
+- Resumen_Temporal_M4: Ventas mensuales/semanales/diarias
+- Resumen_Precios_M6: Estructura de inventario y precios
+- Resumen_Satisfaccion_M7: Dimensiones con medias y niveles
+- Dashboard_Integrado_M8: Hoja principal con tarjetas KPI y gráficos
+- Conclusiones_M8: Hallazgos integrados y recomendaciones
+- Lecciones_M8: Aprendizajes metodológicos
+- Glosario_M8: Términos técnicos en orden alfabético
+- Validacion_M8: Notas de auditoría vibe code
+
+8.2 Estilo visual:
+- Paleta mediterránea: azules suaves, verdes, beige/gris claro
+- Tablas con estilos profesionales, bordes claros
+- Fuentes legibles (Calibri/Arial)
+- Cada tabla/gráfico debe tener: título, leyenda, fuente de datos, nota interpretativa
+
+CAPA 9 – PREPARACIÓN DEL REPOSITORIO (PARA GITHUB)
+Estructura:
+StrategicMetrics-Analytics-Hub/
+├── README.md
+├── LICENSE
+├── .gitignore
+├── data/
+├── dashboards/
+│   └── La_Tiendita_UVM/
+│       ├── Modulo1_VentasGlobales.xlsx
+│       ├── Modulo2_AnalisisSucursales.xlsx
+│       ├── Modulo3_PortafolioProductos.xlsx
+│       ├── Modulo4_ComportamientoTemporal.xlsx
+│       ├── Modulo5_InventarioRotacion.xlsx
+│       ├── Modulo6_PreciosMargenes.xlsx
+│       ├── Modulo7_SatisfaccionClientes.xlsx
+│       └── Modulo8_Dashboard_TienditaUVM.xlsx
+├── src/
+│   └── La_Tiendita_UVM/
+│       ├── generar_modulo1.py
+│       ├── generar_modulo2.py
+│       ├── generar_modulo3.py
+│       ├── generar_modulo4.py
+│       ├── generar_modulo5.py
+│       ├── generar_modulo6.py
+│       ├── generar_modulo7.py
+│       └── generar_modulo8.py
+├── docs/
+│   ├── PROMPT VIBE CODE MÓDULO.txt
+│   └── prompt_orquestador_modulo8.txt
+└── assets/
+
+REGLAS DE EJECUCIÓN:
+1. Usar PROMPT VIBE CODE MÓDULO.txt como fuente única de prompts Módulos 1-7
+2. Ejecutar módulos en orden, notificando al usuario al finalizar cada uno
+3. Solo después de completar los 7 módulos y recibir autorización, construir el Módulo 8
+4. Aplicar auditoría vibe code: detectar y documentar discrepancias, NO forzar coincidencias
+
+REGLAS DE AUDITORÍA (vibe code):
+- Prioridad: detectar y explicar diferencias, NO ajustar datos silenciosamente
+- Verificar misma base de datos y filtros
+- Repetir cálculos de forma trazable
+- Documentar diferencias como nota de auditoría
+
+OBJETIVOS ESPECÍFICOS DEL MÓDULO 8:
+- Describir la dinámica general de ventas
+- Comparar desempeño entre sedes (Estovacuy vs Valera)
+- Analizar canales de pago y estabilidad del flujo de caja
+- Integrar información de ventas, inventario, precios y satisfacción
+- Generar KPIs globales y por sede: pocos, claros y accionables
+
+KPIs PRINCIPALES DEL DASHBOARD:
+- Ventas totales del período: 5,200.62 USD
+- Número total de transacciones: 285
+- Ticket promedio global: 18.25 USD
+- Participación Estovacuy: 42.2% (2,197.00 USD)
+- Participación Valera: 57.8% (3,003.62 USD)
+- Canales de pago: Transferencias 49.8%, Efectivo 21.9%, AirTM 18.8%
+- Productos Clase A: 5 productos generan 80.15% de ventas
+- Satisfacción global: 4.72/5.0
+
+ESTRUCTURA DEL DASHBOARD INTEGRADO (Hoja 8):
+Bloque 1: Visión Global del Negocio
+Bloque 2: Ventas por Sede y Categoría
+Bloque 3: Canales de Pago y Recaudación
+Bloque 4: Comportamiento Temporal de Ventas
+Bloque 5: KPIs Integrados y Objetivos del Módulo 8
+Bloque 6: Notas de Auditoría (vibe code)
+
+RESPONSABLE TÉCNICO: Martin Morfe
+CURSO: Estadística Descriptiva - 2026B
+UNIVERSIDAD: Valle del Momboy
+PROFESORA: Marilyn Briceño

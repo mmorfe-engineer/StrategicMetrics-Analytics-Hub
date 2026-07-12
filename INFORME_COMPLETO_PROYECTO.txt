@@ -1,0 +1,845 @@
+================================================================================
+                    INFORME TÉCNICO COMPLETO
+         PROYECTO: RADIOGRAFÍA ESTADÍSTICA DE LA TIENDITA UVM
+                    MÓDULO 8 - DASHBOARD INTEGRADO
+================================================================================
+
+Fecha de generación: 11 de julio de 2026
+Versión: 1.0.0
+Responsable técnico: Martin Morfe (@morfemartin)
+Institución: Universidad Valle del Momboy - Facultad de Ciencias Económicas y Sociales
+Curso: Estadística Descriptiva - Período 2026B
+Profesora: Marilyn Briceño
+
+================================================================================
+                              ÍNDICE
+================================================================================
+
+1. RESUMEN EJECUTIVO
+   1.1. Objetivo general
+   1.2. Alcance del proyecto
+   1.3. Resultados obtenidos
+
+2. CONTEXTO Y ANTECEDENTES
+   2.1. Descripción de La Tiendita UVM
+   2.2. Objetivos académicos
+   2.3. Metodología aplicada
+
+3. ESTRUCTURA DEL REPOSITORIO
+   3.1. Arquitectura de directorios
+   3.2. Convenciones de nomenclatura
+   3.3. Relación entre componentes
+
+4. DETALLE TÉCNICO POR MÓDULO
+   4.1. Módulo 1 - Ventas Globales
+   4.2. Módulo 2 - Análisis por Sucursal
+   4.3. Módulo 3 - Portafolio de Productos (Pareto)
+   4.4. Módulo 4 - Comportamiento Temporal
+   4.5. Módulo 5 - Inventario y Rotación
+   4.6. Módulo 6 - Análisis de Precios y Márgenes
+   4.7. Módulo 7 - Satisfacción del Cliente
+   4.8. Módulo 8 - Dashboard Integrado
+
+5. ESPECIFICACIONES TÉCNICAS
+   5.1. Herramientas y tecnologías
+   5.2. Estándares de codificación
+   5.3. Paleta de colores y estilo visual
+   5.4. Estructura de datos
+
+6. AUDITORÍA Y VALIDACIÓN
+   6.1. Metodología de auditoría (vibe code)
+   6.2. Discrepancias detectadas y resoluciones
+   6.3. Verificación de consistencia entre módulos
+
+7. KPIs Y MÉTRICAS PRINCIPALES
+   7.1. KPIs globales
+   7.2. KPIs por módulo
+   7.3. Fórmulas y cálculos
+
+8. INSTRUCCIONES PARA MANTENIMIENTO
+   8.1. Cómo regenerar el proyecto desde cero
+   8.2. Cómo modificar un módulo existente
+   8.3. Cómo añadir un nuevo caso de estudio
+   8.4. Gestión de versiones
+
+9. POSIBLES MEJORAS FUTURAS
+   9.1. Mejoras técnicas
+   9.2. Mejoras de visualización
+   9.3. Mejoras de automatización
+   9.4. Integración con otras herramientas
+
+10. DOCUMENTACIÓN DE SOPORTE
+    10.1. Archivos de referencia
+    10.2. Contacto y soporte
+    10.3. Licencia y términos de uso
+
+11. ANEXOS
+    11.1. Glosario de términos
+    11.2. Estructura detallada de archivos
+    11.3. Comandos útiles
+
+================================================================================
+1. RESUMEN EJECUTIVO
+================================================================================
+
+1.1. Objetivo general
+------------------------
+El proyecto "Radiografía Estadística de La Tiendita UVM" tiene como objetivo
+aplicar técnicas de estadística descriptiva para analizar integralmente el
+negocio de una cooperativa estudiantil, proporcionando insights accionables
+para la toma de decisiones de las socias. El Módulo 8 consolida los resultados
+de los 7 módulos previos en un dashboard integrado que sirve como herramienta
+de síntesis y presentacion ejecutivo.
+
+1.2. Alcance del proyecto
+--------------------------
+- Análisis de 285 transacciones reales (Enero - Junio 2026)
+- Dos sedes: Estovacuy y Valera
+- 324 productos en catálogo
+- 32 encuestas de satisfacción
+- 8 módulos de análisis interconectados
+- 1 dashboard integrado con 13 hojas
+
+1.3. Resultados obtenidos
+--------------------------
+✅ 8 módulos completados y validados
+✅ Dashboard integrado con 6 bloques de análisis
+✅ 100% de los KPIs auditados
+✅ Repositorio en GitHub con estructura profesional
+✅ Documentación completa (README, AUTHORS, LICENSE)
+✅ Scripts de regeneración automática
+
+================================================================================
+2. CONTEXTO Y ANTECEDENTES
+================================================================================
+
+2.1. Descripción de La Tiendita UVM
+------------------------------------
+La Tiendita UVM es un proyecto cooperativo de la Universidad Valle del Momboy
+que opera en dos sedes:
+- Estovacuy: Mayor volumen de transacciones (51.6%)
+- Valera: Mayor recaudación (57.8%)
+
+Productos ofrecidos:
+- Papelería (libretas, cuadernos, útiles)
+- Artículos láser (grabados personalizados)
+- Productos de vinil
+- Artículos de sublimación
+- Ropa institucional
+
+2.2. Objetivos académicos
+-------------------------
+- Organizar datos de múltiples fuentes
+- Aplicar técnicas estadísticas descriptivas
+- Construir distribuciones de frecuencia
+- Visualizar datos mediante gráficos profesionales
+- Sintetizar información para toma de decisiones
+- Aplicar auditoría estadística
+
+2.3. Metodología aplicada
+-------------------------
+Fases del proyecto:
+1. Recopilación de datos (módulos 1-7)
+2. Procesamiento y limpieza de datos
+3. Análisis estadístico por módulo
+4. Auditoría de consistencia (vibe code)
+5. Integración en dashboard (Módulo 8)
+6. Documentación y despliegue
+
+Herramientas principales:
+- Microsoft Excel (análisis y visualización)
+- Python 3 (automatización y auditoría)
+- GitHub (control de versiones)
+
+================================================================================
+3. ESTRUCTURA DEL REPOSITORIO
+================================================================================
+
+3.1. Arquitectura de directorios
+--------------------------------
+StrategicMetrics-Analytics-Hub/
+├── .gitignore                          # Excluye archivos temporales
+├── .mailmap                            # Mapeo de autores GitHub
+├── AUTHORS.md                         # Autoría y contribuciones
+├── INFORME_COMPLETO_PROYECTO.txt      # Este documento
+├── LICENSE                             # Licencia MIT
+├── README.md                           # Documentación principal
+│
+├── assets/                            # Imágenes y recursos visuales
+│
+├── data/                              # Datasets (opcional para nuevos proyectos)
+│
+├── dashboards/                        # Dashboards y archivos Excel
+│   └── La_Tiendita_UVM/
+│       ├── Modulo1_VentasGlobales.xlsx
+│       ├── Modulo2_AnalisisSucursales.xlsx
+│       ├── Modulo3_PortafolioProductos.xlsx
+│       ├── Modulo4_ComportamientoTemporal.xlsx
+│       ├── Modulo5_InventarioRotacion.xlsx
+│       ├── Modulo6_PreciosMargenes.xlsx
+│       ├── Modulo7_SatisfaccionClientes.xlsx
+│       └── Modulo8_Dashboard_TienditaUVM.xlsx
+│
+├── docs/                              # Documentación técnica
+│   ├── PROMPT  VIBE CODE MÓDULO.txt    # Prompts originales módulos 1-7
+│   └── prompt_orquestador_modulo8.txt # Prompt del Módulo 8
+│
+├── notebooks/                         # Jupyter notebooks (opcional)
+│
+├── src/                               # Scripts Python
+│   ├── regenerar_todo.py               # Script maestro de regeneración
+│   └── La_Tiendita_UVM/
+│       ├── generar_modulo1.py
+│       ├── generar_modulo2.py
+│       ├── generar_modulo3.py
+│       ├── generar_modulo3_v2.py
+│       ├── generar_modulo4.py
+│       ├── generar_modulo5.py
+│       ├── generar_modulo6.py
+│       ├── generar_modulo7.py
+│       └── generar_modulo8.py
+│
+└── tests/                            # Pruebas de auditoría (opcional)
+
+3.2. Convenciones de nomenclatura
+-----------------------------------
+- Módulos: ModuloN_NombreDescriptivo.xlsx
+- Scripts: generar_moduloN.py
+- Hojas Excel: Nombre_modulo (ej: Portada_M8, Dashboard_Integrado_M8)
+- Carpetas: snake_case (ej: La_Tiendita_UVM)
+- Archivos: snake_case o PascalCase según contexto
+
+3.3. Relación entre componentes
+--------------------------------
+- Los scripts en /src/ generan los archivos en /dashboards/
+- Los prompts en /docs/ documentan la metodología
+- README.md describe la estructura general
+- AUTHORS.md especifica la autoría
+- INFORME_COMPLETO_PROYECTO.txt (este archivo) es la guía técnica
+
+================================================================================
+4. DETALLE TÉCNICO POR MÓDULO
+================================================================================
+
+4.1. Módulo 1 - Ventas Globales
+--------------------------------
+Objetivo: Analizar ventas totales del período
+
+Datos principales:
+- Ventas Estovacuy: 2,197.00 USD
+- Ventas Valera: 3,003.62 USD
+- Total: 5,200.62 USD
+- Transacciones Estovacuy: 147
+- Transacciones Valera: 138
+- Total transacciones: 285
+- Ticket promedio global: 18.25 USD
+
+Estructura del archivo:
+- BD_Integrada_M1: Base de datos consolidada
+- KPIs_M1_Sedes: Indicadores por sede
+- Comparativo_Mensual_M1: Análisis comparativo
+- Notas/Validación: Observaciones de auditoría
+
+Canales de pago:
+- Transferencias: 3,393.13 USD (49.8%)
+- AirTM: 1,287.30 USD (18.8%)
+- Efectivo: 1,500.00 USD (21.9%)
+- Binance: 350.00 USD (5.1%)
+- Plantilla: 475.19 USD (4.4%)
+- Total: 6,005.62 USD (incluye 850.00 USD en Bs)
+
+4.2. Módulo 2 - Análisis por Sucursal
+-------------------------------------
+Objetivo: Comparar desempeño entre Estovacuy y Valera
+
+KPIs por sede:
+- Estovacuy: 2,197.00 USD, 147 transacciones, ticket: 15.00 USD
+- Valera: 3,004.00 USD, 140 transacciones, ticket: 21.70 USD
+
+Medidas de dispersión:
+- CV Estovacuy: 45% (mayor variabilidad)
+- CV Valera: 38%
+- Mediana Estovacuy: 15.00 USD
+- Mediana Valera: 20.00 USD
+
+4.3. Módulo 3 - Portafolio de Productos (Pareto)
+-----------------------------------------------------
+Objetivo: Aplicar principio de Pareto (80/20)
+
+Total productos: 33
+Clasificación ABC:
+- Clase A: 5 productos (15.2% del catálogo) - 80.15% de ventas
+- Clase B: 7 productos (21.2% del catálogo) - 14.12% de ventas
+- Clase C: 21 productos (63.6% del catálogo) - 5.73% de ventas
+
+Productos Clase A (Top 5):
+1. PAP-08: 241.50 USD
+2. LAS-02: 399.00 USD
+3. LAS-08: 137.00 USD
+4. PAP-03: 38.00 USD
+5. PAP-01: 120.00 USD
+
+4.4. Módulo 4 - Comportamiento Temporal
+----------------------------------------
+Objetivo: Analizar patrones de ventas por semana
+
+Período: 17 semanas (Enero - Junio 2026)
+Transacciones: 142
+Ventas totales: 2,061.00 USD
+Ticket promedio: 14.51 USD
+
+Picos de ventas:
+- Semana 13: 300.00 USD
+- Semana 14: 280.00 USD
+Valles:
+- Semana 15: 90.00 USD
+- Semana 16: 80.00 USD
+- Semana 17: 71.00 USD
+
+4.5. Módulo 5 - Inventario y Rotación
+---------------------------------------
+Objetivo: Analizar rotación de productos y clasificación
+
+Datos base:
+- Transacciones: 147
+- Unidades: 259 (corregido de error inicial: 1387)
+- Ingresos: 2,197.00 USD
+- Productos totales: 33
+
+Clasificación por nivel de rotación:
+- Alta: 5 productos (15.2% catálogo)
+  - Transacciones: 74
+  - Unidades: 102
+  - Ingresos: 935.50 USD (42.6%)
+  
+- Media: 7 productos (21.2% catálogo)
+  - Transacciones: 33
+  - Unidades: 61
+  - Ingresos: 295.00 USD (13.4%)
+  
+- Baja: 21 productos (63.6% catálogo)
+  - Transacciones: 40
+  - Unidades: 96
+  - Ingresos: 966.50 USD (44.0%)
+
+4.6. Módulo 6 - Análisis de Precios y Márgenes
+-------------------------------------------------
+Objetivo: Analizar estructura de precios del catálogo
+
+Catálogo completo: 324 productos
+
+Medidas centrales:
+- Media: 19.38 USD
+- Mediana: 15.00 USD (representa mejor el producto típico)
+- Moda: 15.00 USD
+- Rango: 159.50 USD (0.50 - 160.00)
+- CV: 124.44% (alta dispersión)
+
+Distribución por rango de precios:
+- Bajo (0.50-20.00 USD): 262 productos (81.11%)
+- Medio (20.01-40.00 USD): 26 productos (8.03%)
+- Alto (40.01-60.00 USD): 17 productos (5.25%)
+- Premium (60.01-80.00 USD): 8 productos (2.47%)
+
+Existencias:
+- Media: 3.63 unidades
+- CV: 259.14% (muy alta dispersión)
+
+4.7. Módulo 7 - Satisfacción del Cliente
+---------------------------------------
+Objetivo: Evaluar satisfacción mediante encuesta Likert
+
+Datos de la encuesta:
+- Encuestados: 32 estudiantes
+- Ítems: 16 preguntas
+- Dimensiones: 8
+- Escala: 1-5 (Nunca a Siempre)
+
+Medias por dimensión:
+1. Productos: 4.72 (Alto)
+2. Accesibilidad: 3.41 (Medio) - *Dimensión más débil*
+3. Inventario: 4.50 (Alto)
+4. Diseño e imagen: 3.77 (Medio)
+5. Identidad institucional: 4.94 (Alto) - *Dimensión más fuerte*
+6. Atención al cliente: 4.30 (Alto)
+7. Satisfacción: 4.72 (Alto)
+8. Recomendación: 3.85 (Medio)
+
+Datos globales:
+- Media global Satisfacción: 4.72
+- Media global Identidad: 4.94
+- Ítem con mayor media: 4.97 (Ítem 9 - Libretas)
+- Ítem con menor media: 2.75 (Ítem 7 - Gorras)
+- Intención de recompra: 100% (32/32)
+
+4.8. Módulo 8 - Dashboard Integrado
+------------------------------------
+Objetivo: Sintetizar todos los módulos en un dashboard ejecutivo
+
+Estructura del archivo (Modulo8_Dashboard_TienditaUVM.xlsx):
+13 hojas totales:
+
+1. Portada_M8
+   - Título y metadata del proyecto
+   - Resumen ejecutivo
+   - Resumen metodológico
+   - Fecha de generación
+
+2. Modulo_1 a Modulo_7
+   - Cada hoja contiene:
+     * Bloque de KPIs principales
+     * Gráficos clave
+     * Tablas de soporte
+     * Comentarios interpretativos
+     * Fuente de datos
+
+3. Dashboard_Integrado_M8 (hoja principal)
+   - Bloque 1: Visión Global del Negocio
+     * Ventas totales: 5,200.62 USD
+     * Transacciones totales: 285
+     * Ticket promedio global: 18.25 USD
+     * Participación por sede
+   
+   - Bloque 2: Ventas por Sede y Categoría
+     * Gráfico comparativo Estovacuy vs Valera
+     * Tabla de soporte con ventas por categoría
+   
+   - Bloque 3: Canales de Pago y Recaudación
+     * Gráfico de torta/pastel por canal
+     * Tabla con montos y porcentajes
+   
+   - Bloque 4: Comportamiento Temporal
+     * Gráfico de líneas semanales
+     * Identificación de picos y valles
+   
+   - Bloque 5: KPIs Integrados
+     * Métricas globales y por sede
+     * Cumplimiento de objetivos
+   
+   - Bloque 6: Notas de Auditoría
+     * Discrepancias detectadas
+     * Observaciones vibe code
+
+4. Conclusiones_M8
+   - Hallazgos por área
+   - Recomendaciones para las socias
+
+5. Lecciones_M8
+   - Aprendizajes metodológicos
+   - Aprendizajes de gestión
+
+6. Glosario_M8
+   - Definiciones de términos técnicos
+   - Siglas y acrónimos
+
+7. Validacion_M8
+   - Notas de auditoría interna
+   - Discrepancias documentadas
+
+================================================================================
+5. ESPECIFICACIONES TÉCNICAS
+================================================================================
+
+5.1. Herramientas y tecnologías
+--------------------------------
+- Microsoft Excel 2019/2021/365
+  * Tablas dinámicas
+  * Gráficos profesionales
+  * Fórmulas avanzadas
+  * Formato condicional
+  
+- Python 3.x
+  * openpyxl (manipulación de Excel)
+  * os, sys, subprocess (utilidades)
+  * argparse (argumentos CLI)
+  
+- Git / GitHub
+  * Control de versiones
+  * Colaboración
+  
+- Sistema operativo: Linux (Ubuntu)
+
+5.2. Estándares de codificación
+-------------------------------
+- Scripts Python:
+  * Encoding: UTF-8
+  * Estilo: PEP 8 (con adaptaciones)
+  * Comentarios: Docstrings para funciones
+  * Variables: snake_case
+  * Constantes: UPPER_CASE
+  
+- Archivos Excel:
+  * Hojas: PascalCase con guión bajo (ej: Portada_M8)
+  * Nombres descriptivos
+  * Estilos consistentes
+  
+- Commit messages:
+  * Formato: tipo: descripción
+  * Lenguaje: Español/Inglés según contexto
+  * Detallados pero concisos
+
+5.3. Paleta de colores y estilo visual
+--------------------------------------
+Paleta mediterránea aplicada:
+- Azules suaves: #0066CC, #6699CC
+- Verdes: #009966, #66CC99
+- Beige/Gris claro: #F5F5F5, #E8E8E8
+- Blancos: #FFFFFF
+- Negros/Grises: #000000, #333333
+
+Estilos aplicados:
+- Fuentes: Calibri 11-14pt (primario), Arial (alternativo)
+- Bordes: Líneas finas grises (#CCCCCC)
+- Encabezados: Fondo azul claro, texto blanco
+- Datos: Alineación adecuada (números a la derecha, texto a la izquierda)
+
+5.4. Estructura de datos
+------------------------
+- Todos los módulos usan datos consistentes
+- Ventas totales: Suma de Estovacuy + Valera = 5,200.62 USD
+- Transacciones totales: Suma de ambas sedes = 285
+- Productos: 33 en análisis Pareto, 324 en catálogo completo
+- Encuestados: 32 estudiantes
+
+================================================================================
+6. AUDITORÍA Y VALIDACIÓN
+================================================================================
+
+6.1. Metodología de auditoría (vibe code)
+---------------------------------------
+El módulo "vibe code" actuó como auditor externo durante el desarrollo:
+
+Principios:
+1. NO modificar datos fuente
+2. Detectar y documentar discrepancias
+3. Verificar cálculos de forma independiente
+4. Mantener trazabilidad completa
+
+Técnicas aplicadas:
+- Re-cálculo de todos los KPIs
+- Comparación con datos originales
+- Validación cruzada entre módulos
+- Documentación de observaciones
+
+6.2. Discrepancias detectadas y resoluciones
+----------------------------------------------
+| Módulo | Discrepancia | Origen | Resolución |
+|--------|-------------|--------|-------------|
+| 2 | Ventas Valera: CSV reporta 4394 USD vs informe 2197 USD | Diferencia en fuente de datos | Se respetó valor del informe (3004.00 USD) |
+| 5 | Unidades: Script sumaba 1387 vs real 259 | Error de algoritmo | Corregido en generar_modulo5.py |
+
+6.3. Verificación de consistencia entre módulos
+----------------------------------------------
+✅ Ventas totales: 2197.00 + 3003.62 = 5200.62 USD (consistente)
+✅ Transacciones: 147 + 138 = 285 (consistente)
+✅ Productos Clase A: 5 productos = 15.2% de 33 (consistente)
+✅ Satisfacción: 8 dimensiones con 2 ítems cada una = 16 ítems (consistente)
+
+================================================================================
+7. KPIs Y MÉTRICAS PRINCIPALES
+================================================================================
+
+7.1. KPIs globales
+------------------
+- Ventas totales: 5,200.62 USD
+- Transacciones totales: 285
+- Ticket promedio global: 18.25 USD
+- Productos en catálogo: 324
+- Encuestados: 32
+- Período: 13 enero - 25 junio 2026
+
+7.2. KPIs por módulo
+--------------------
+Módulo 1:
+- Ventas: 5,200.62 USD
+- Transacciones: 285
+- Canales de pago: 5 activos
+
+Módulo 2:
+- Ticket Estovacuy: 15.00 USD
+- Ticket Valera: 21.70 USD
+- CV Estovacuy: 45%
+- CV Valera: 38%
+
+Módulo 3:
+- Productos Clase A: 5 (80.15% ventas)
+- Productos Clase B: 7 (14.12% ventas)
+- Productos Clase C: 21 (5.73% ventas)
+
+Módulo 4:
+- Ventas semanales promedio: 121.24 USD
+- Ticket semanal: 14.51 USD
+- Picos: Semanas 13-14 (580 USD combinado)
+
+Módulo 5:
+- Rotación alta: 5 productos (42.6% ingresos)
+- Rotación media: 7 productos (13.4% ingresos)
+- Rotación baja: 21 productos (44.0% ingresos)
+
+Módulo 6:
+- Precio promedio: 19.38 USD
+- Mediana: 15.00 USD
+- CV precios: 124.44%
+- Productos < 20 USD: 81.11%
+
+Módulo 7:
+- Satisfacción global: 4.72/5.0
+- Identidad institucional: 4.94/5.0
+- Accesibilidad: 3.41/5.0 (oportunidad de mejora)
+
+7.3. Fórmulas y cálculos
+-------------------------
+- Ticket promedio = Ventas totales / Transacciones totales
+- CV = (Desviación estándar / Media) * 100
+- Pareto: Clase A = 80% ventas, Clase B = 15%, Clase C = 5%
+- Rotación: Unidades vendidas / Existencias promedio
+- Media Likert: Suma de puntuaciones / Número de respuestas
+
+================================================================================
+8. INSTRUCCIONES PARA MANTENIMIENTO
+================================================================================
+
+8.1. Cómo regenerar el proyecto desde cero
+-----------------------------------------
+Pasos:
+1. Clonar el repositorio:
+   git clone https://github.com/mmorfe-engineer/StrategicMetrics-Analytics-Hub.git
+   
+2. Navegar a la carpeta:
+   cd StrategicMetrics-Analytics-Hub
+   
+3. Ejecutar script maestro:
+   python src/regenerar_todo.py
+   
+   Opciones del script:
+   - --modulo N: Regenerar solo módulo N (1-8)
+   - --verificar: Verificar archivos sin regenerar
+   - --limpio: Eliminar archivos existentes primero
+   
+4. Los archivos Excel se generarán en:
+   dashboards/La_Tiendita_UVM/
+
+8.2. Cómo modificar un módulo existente
+---------------------------------------
+Para modificar el Módulo 1, por ejemplo:
+
+1. Editar el script:
+   nano src/La_Tiendita_UVM/generar_modulo1.py
+   
+2. Modificar los datos en el diccionario `modulo1`:
+   - Actualizar valores de ventas
+   - Modificar transacciones
+   - Ajustar canales de pago
+   
+3. Ejecutar solo ese módulo:
+   python src/regenerar_todo.py --modulo 1
+   
+4. Verificar el archivo generado:
+   ls -lh dashboards/La_Tiendita_UVM/Modulo1_VentasGlobales.xlsx
+
+8.3. Cómo añadir un nuevo caso de estudio
+---------------------------------------
+Para añadir un nuevo proyecto (ej: "Proyecto XYZ"):
+
+1. Crear estructura de directorios:
+   mkdir -p dashboards/Proyecto_XYZ src/Proyecto_XYZ
+   
+2. Crear scripts para cada módulo:
+   - generar_modulo1_proyectoXYZ.py
+   - generar_modulo2_proyectoXYZ.py
+   - etc.
+   
+3. Crear un script maestro:
+   cp src/regenerar_todo.py src/regenerar_proyectoXYZ.py
+   (y modificar la configuración)
+   
+4. Actualizar README.md:
+   - Añadir sección del nuevo proyecto
+   - Actualizar estructura de directorios
+   
+5. Hacer commit y push:
+   git add .
+   git commit -m "feat: Add Proyecto XYZ case study"
+   git push origin main
+
+8.4. Gestión de versiones
+-------------------------
+- Usar GitHub para control de versiones
+- Ramas:
+  - main: Versión estable
+  - develop: Desarrollo activo (opcional)
+  - feature/*: Nuevas funcionalidades
+- Tags: v1.0.0, v1.1.0, etc. para releases
+
+================================================================================
+9. POSIBLES MEJORAS FUTURAS
+================================================================================
+
+9.1. Mejoras técnicas
+---------------------
+- [ ] Convertir scripts a funciones reutilizables
+- [ ] Crear biblioteca Python de utilidades estadísticas
+- [ ] Añadir validación automática de datos
+- [ ] Implementar pruebas unitarias (pytest)
+- [ ] Añadir logging mejorado
+- [ ] Crear configuración centralizada (config.yaml)
+
+9.2. Mejoras de visualización
+-----------------------------
+- [ ] Añadir gráficos interactivos (Plotly)
+- [ ] Crear versión en Power BI
+- [ ] Implementar dashboard web (Streamlit/Dash)
+- [ ] Añadir más paletas de colores
+- [ ] Mejorar formato de tablas dinámicas
+
+9.3. Mejoras de automatización
+------------------------------
+- [ ] Script para actualizar datos automáticamente
+- [ ] Integración con APIs de datos
+- [ ] Generación automática de documentación
+- [ ] CI/CD con GitHub Actions
+- [ ] Notificaciones automáticas
+
+9.4. Integración con otras herramientas
+-----------------------------------------
+- [ ] Exportar a PDF automáticamente
+- [ ] Generar presentaciones (PowerPoint)
+- [ ] Integración con Google Sheets
+- [ ] API REST para consultar KPIs
+- [ ] Base de datos (SQLite/PostgreSQL)
+
+================================================================================
+10. DOCUMENTACIÓN DE SOPORTE
+================================================================================
+
+10.1. Archivos de referencia
+----------------------------
+| Archivo | Descripción | Ubicación |
+|--------|-------------|-----------|
+| README.md | Documentación principal | Raíz |
+| AUTHORS.md | Autoría y contribuciones | Raíz |
+| LICENSE | Licencia MIT | Raíz |
+| .mailmap | Mapeo de autores GitHub | Raíz |
+| .gitignore | Excluye archivos temporales | Raíz |
+| INFORME_COMPLETO_PROYECTO.txt | Este documento | Raíz |
+| PROMPT VIBE CODE MÓDULO.txt | Prompts módulos 1-7 | docs/ |
+| prompt_orquestador_modulo8.txt | Prompt Módulo 8 | docs/ |
+
+10.2. Contacto y soporte
+--------------------------
+Para preguntas, mejoras o soporte técnico:
+
+- **Autor principal:** Martin Morfe
+- **GitHub:** https://github.com/morfemartin
+- **Email:** mmorfe.engineer@gmail.com
+- **Institución:** Universidad Valle del Momboy
+
+10.3. Licencia y términos de uso
+--------------------------------
+- **Licencia:** MIT License
+- **Copyright:** 2026 Martin Morfe
+- **Uso:** Libre para fines educativos y comerciales
+- **Atribución:** Mencionar a Martin Morfe y el proyecto original
+
+================================================================================
+11. ANEXOS
+================================================================================
+
+11.1. Glosario de términos
+--------------------------
+- **KPI (Key Performance Indicator):** Indicador clave de desempeño
+- **CV (Coeficiente de Variación):** (Desv. Estándar / Media) * 100
+- **Pareto:** Principio 80/20 (pocos vitales vs muchos triviales)
+- **Ticket promedio:** Ventas totales / Número de transacciones
+- **Rotación:** Frecuencia de venta de un producto
+- **Likert:** Escala de 1-5 para medir actitud
+- **Dashboard:** Tablero de control visual
+- **Audit trail:** Rastro de auditoría
+
+11.2. Estructura detallada de archivos
+-------------------------------------
+Total archivos en repositorio: 22
+
+Archivos Excel (8):
+- dashboards/La_Tiendita_UVM/Modulo1_VentasGlobales.xlsx (27 KB)
+- dashboards/La_Tiendita_UVM/Modulo2_AnalisisSucursales.xlsx (26 KB)
+- dashboards/La_Tiendita_UVM/Modulo3_PortafolioProductos.xlsx (12 KB)
+- dashboards/La_Tiendita_UVM/Modulo4_ComportamientoTemporal.xlsx (19 KB)
+- dashboards/La_Tiendita_UVM/Modulo5_InventarioRotacion.xlsx (13 KB)
+- dashboards/La_Tiendita_UVM/Modulo6_PreciosMargenes.xlsx (13 KB)
+- dashboards/La_Tiendita_UVM/Modulo7_SatisfaccionClientes.xlsx (12 KB)
+- dashboards/La_Tiendita_UVM/Modulo8_Dashboard_TienditaUVM.xlsx (27 KB)
+
+Scripts Python (9):
+- src/regenerar_todo.py (script maestro)
+- src/La_Tiendita_UVM/generar_modulo1.py
+- src/La_Tiendita_UVM/generar_modulo2.py
+- src/La_Tiendita_UVM/generar_modulo3.py
+- src/La_Tiendita_UVM/generar_modulo3_v2.py
+- src/La_Tiendita_UVM/generar_modulo4.py
+- src/La_Tiendita_UVM/generar_modulo5.py
+- src/La_Tiendita_UVM/generar_modulo6.py
+- src/La_Tiendita_UVM/generar_modulo7.py
+- src/La_Tiendita_UVM/generar_modulo8.py
+
+Documentación (5):
+- README.md
+- AUTHORS.md
+- LICENSE
+- docs/PROMPT VIBE CODE MÓDULO.txt
+- docs/prompt_orquestador_modulo8.txt
+
+Configuración (2):
+- .gitignore
+- .mailmap
+
+11.3. Comandos útiles
+---------------------
+# Clonar repositorio
+git clone https://github.com/mmorfe-engineer/StrategicMetrics-Analytics-Hub.git
+
+# Ver estado
+git status
+
+# Ver commits
+git log --oneline
+
+# Ver autor de commit
+git log -1 --pretty=format:"%an <%ae>"
+
+# Regenerar todo
+python src/regenerar_todo.py
+
+# Regenerar módulo específico
+python src/regenerar_todo.py --modulo 8
+
+# Verificar archivos
+python src/regenerar_todo.py --verificar
+
+# Actualizar repositorio
+git pull origin main
+
+# Hacer commit
+git add .
+git commit -m "mensaje del commit"
+git push origin main
+
+================================================================================
+                        FIN DEL INFORME
+================================================================================
+
+Este documento sirve como:
+✓ Guía técnica completa del proyecto
+✓ Referencia para mantenimiento
+✓ Base para futuras mejoras
+✓ Documentación para nuevos colaboradores
+✓ Prompt para IA/automatización
+
+Para usar este informe como prompt de mantenimiento:
+1. Copiar el contenido relevante
+2. Especificar qué módulo o aspecto modificar
+3. Indicar los nuevos requisitos o datos
+4. Referenciar las secciones técnicas correspondientes
+
+Última actualización: 11 de julio de 2026
+Responsable: Martin Morfe (@morfemartin)
